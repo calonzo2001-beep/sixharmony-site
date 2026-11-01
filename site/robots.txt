@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /thank-you-audit.html
+Disallow: /thank-you-booked.html
+
+Sitemap: https://sixharmony.net/sitemap.xml

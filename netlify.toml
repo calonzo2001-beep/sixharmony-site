@@ -1,0 +1,57 @@
+[build]
+  publish = "site"
+
+[[redirects]]
+  from = "/clinics.html"
+  to = "/ai-receptionist-eye-care.html"
+  status = 301
+
+[[redirects]]
+  from = "/clinics"
+  to = "/ai-receptionist-eye-care.html"
+  status = 301
+
+[[redirects]]
+  from = "/industrial.html"
+  to = "/ai-back-office-industrial-services.html"
+  status = 301
+
+[[redirects]]
+  from = "/industrial"
+  to = "/ai-back-office-industrial-services.html"
+  status = 301
+
+[[redirects]]
+  from = "/demo"
+  to = "https://sixharmony.luminasales.io/eye-care-demo"
+  status = 302
+
+[[redirects]]
+  from = "/eye-care-demo"
+  to = "https://sixharmony.luminasales.io/eye-care-demo"
+  status = 302
+
+[[redirects]]
+  from = "/industrial-demo"
+  to = "https://sixharmony.luminasales.io/industrial-services"
+  status = 302
+
+[[redirects]]
+  from = "/book"
+  to = "https://cal.com/sixharmony/leak-map-call"
+  status = 302
+
+[[redirects]]
+  from = "/thank-you-audit.html"
+  to = "/audit.html"
+  status = 301
+
+[[redirects]]
+  from = "/assessment"
+  to = "/audit.html"
+  status = 301
+
+[[redirects]]
+  from = "/free-audit"
+  to = "/audit.html"
+  status = 301
