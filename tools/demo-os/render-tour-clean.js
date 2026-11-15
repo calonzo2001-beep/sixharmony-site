@@ -25,7 +25,10 @@ const N = {
     typed: 'Boiler accounts with no visit since summer' },
 }[niche];
 // beat lengths in seconds — the voiceover script is written to these
-const BEATS = [5.0, 7.0, 9.5, 7.5, 8.0, 6.0, 10.0, 8.0, 10.0, 8.0];
+const BEATS = process.env.BEATS ? process.env.BEATS.split(',').map(Number) : [5.0, 7.0, 9.5, 7.5, 8.0, 6.0, 10.0, 8.0, 10.0, 8.0];
+const SPEEDS = process.env.SPEEDS ? process.env.SPEEDS.split(',').map(Number) : [];
+let SPD = SPEEDS[0] || 1;
+const NOCAP = !!process.env.NOCAP;
 
 (async () => {
   const dir = 'frames-' + out; fs.rmSync(dir, { recursive: true, force: true }); fs.mkdirSync(dir);
@@ -80,11 +83,11 @@ const BEATS = [5.0, 7.0, 9.5, 7.5, 8.0, 6.0, 10.0, 8.0, 10.0, 8.0];
     await p.evaluate(x => window.__frame(x), s);
     await p.screenshot({ path: `${dir}/f${String(frame++).padStart(5, '0')}.jpg`, type: 'jpeg', quality: 93 });
   }
-  const wait = async sec => { for (let i = 0, n = Math.round(sec * FPS); i < n; i++) await tick(); };
+  const wait = async sec => { for (let i = 0, n = Math.round(sec / SPD * FPS); i < n; i++) await tick(); };
   const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
   async function moveTo(x, y, sec) {
     const sx = s.cx, sy = s.cy, d = Math.hypot(x - sx, y - sy);
-    const n = Math.max(6, Math.round((sec || Math.min(0.95, Math.max(0.4, d / 1300))) * FPS));
+    const n = Math.max(4, Math.round((sec || Math.min(0.95, Math.max(0.4, d / 1300))) / SPD * FPS));
     for (let i = 1; i <= n; i++) { const e = ease(i / n); s.cx = sx + (x - sx) * e; s.cy = sy + (y - sy) * e; await p.mouse.move(s.cx, s.cy); await tick(); }
   }
   async function box(sel, nth) { const l = p.locator(sel).nth(nth || 0); return await l.boundingBox(); }
@@ -96,7 +99,7 @@ const BEATS = [5.0, 7.0, 9.5, 7.5, 8.0, 6.0, 10.0, 8.0, 10.0, 8.0];
     await wait(0.2);
   }
   async function nav(hash) { await click(`#nav a[href="${hash}"]`); s.sy = 0; await wait(0.25); }
-  async function scrollTo(y, sec) { const a = s.sy, n = Math.round(sec * FPS); for (let i = 1; i <= n; i++) { s.sy = a + (y - a) * ease(i / n); await tick(); } }
+  async function scrollTo(y, sec) { const a = s.sy, n = Math.max(1, Math.round(sec / SPD * FPS)); for (let i = 1; i <= n; i++) { s.sy = a + (y - a) * ease(i / n); await tick(); } }
   const getThumb = () => p.evaluate(() => { const t = document.querySelector('.seg .thumb'); return t ? { l: parseFloat(t.style.left), w: parseFloat(t.style.width) } : null; });
   async function clickTab(sel) {
     const old = await getThumb();
@@ -106,7 +109,7 @@ const BEATS = [5.0, 7.0, 9.5, 7.5, 8.0, 6.0, 10.0, 8.0, 10.0, 8.0];
       await p.evaluate(v => { const t = document.querySelector('.seg .thumb'); if (t) { t.style.left = v.l + 'px'; t.style.width = v.w + 'px'; } }, { l: old.l + (fin.l - old.l) * e, w: old.w + (fin.w - old.w) * e });
       await tick(); }
   }
-  const cap = i => { s.capText = N.caps[i]; s.capT = 1; };
+  const cap = i => { if (NOCAP) return; s.capText = N.caps[i]; s.capT = 1; };
   const capOff = () => { s.capT = 0; };
   let beatStart = 0, beatIdx = 0; const SNAP = [];
   async function endBeat() {
@@ -117,7 +120,7 @@ const BEATS = [5.0, 7.0, 9.5, 7.5, 8.0, 6.0, 10.0, 8.0, 10.0, 8.0];
     s.capT = 0;
     while (frame < target) await tick();
     console.log(`beat ${beatIdx + 1} done @ ${(frame / FPS).toFixed(2)}s (real ${(Date.now() - t0) / 1000 | 0}s)`);
-    beatStart = frame; beatIdx++;
+    beatStart = frame; beatIdx++; SPD = SPEEDS[beatIdx] || 1;
     return beatIdx >= MAXBEATS;
   }
 
@@ -158,7 +161,7 @@ const BEATS = [5.0, 7.0, 9.5, 7.5, 8.0, 6.0, 10.0, 8.0, 10.0, 8.0];
   await click('a.act.primary[href="#newcampaign"]'); s.sy = 0; await wait(0.6);
   await click('#audtxt', 0, 0.3, 0.4);
   await p.keyboard.press('Control+A'); await p.keyboard.press('Backspace'); await tick();
-  for (const ch of N.typed) { await p.keyboard.type(ch); await tick(); await tick(); }
+  for (const ch of N.typed) { await p.keyboard.type(ch); await tick(); if (SPD < 1.4) await tick(); }
   await wait(0.3);
   await click('#buildaud'); await wait(1.2);
   if (await endBeat()) return finish();
