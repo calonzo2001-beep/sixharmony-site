@@ -2,20 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Six Harmony demo console — sample data.">
-<title>Six Harmony Console</title>
+<title>Summit Eye Care OS</title>
 <style>[hidden]{display:none!important} html{color-scheme:light}</style>
 </head>
 <body>
 <style>
-/* Modeled on Best Fitness OS: light neutral surface, white cards, grouped left sidebar, quiet type, pills for state. Light-first. */
+/* Reference: Best Fitness OS / Twenty CRM. Light-first console: grouped sidebar, white cards, pills, worked-out numbers. */
 :root{
   --bg:#f4f5f6; --panel:#ffffff; --panel2:#f7f8f9; --line:#e5e7ea; --fg:#17191e; --mut:#6b7078;
   --accent:#5d4fd6; --accent-ink:#ffffff;
   --good:#17804d; --goodbg:#e7f4ed; --warn:#8a6410; --warnbg:#f8f0db; --bad:#b3362c; --badbg:#f9e9e7; --info:#2b6cb0; --infobg:#e8f0f9;
   --chipbg:#eef0f2;
+  --c1:#b3722c; --c2:#2b6cb0; --c3:#17804d; --c4:#5d4fd6; --c5:#b3362c; --c6:#007fa3;
   --display:'Space Grotesk',system-ui,sans-serif; --body:'Inter',system-ui,sans-serif;
 }
 @media (prefers-color-scheme: dark){
@@ -24,6 +24,7 @@
     --accent:#9d8cff; --accent-ink:#17122e;
     --good:#4fc08d; --goodbg:#18302a; --warn:#e6b450; --warnbg:#332a16; --bad:#e2695e; --badbg:#36201e; --info:#6aa9e9; --infobg:#1b2836;
     --chipbg:#24262c;
+    --c1:#c77c3f; --c2:#4a8ccd; --c3:#36a476; --c4:#8f7df0; --c5:#e2695e; --c6:#1b9fc0;
     color-scheme:dark;
   }
 }
@@ -32,79 +33,109 @@
   --accent:#9d8cff; --accent-ink:#17122e;
   --good:#4fc08d; --goodbg:#18302a; --warn:#e6b450; --warnbg:#332a16; --bad:#e2695e; --badbg:#36201e; --info:#6aa9e9; --infobg:#1b2836;
   --chipbg:#24262c;
+  --c1:#c77c3f; --c2:#4a8ccd; --c3:#36a476; --c4:#8f7df0; --c5:#e2695e; --c6:#1b9fc0;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--fg);font-family:var(--body);margin:0;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
   padding-block:0 32px;font-size:13.5px;line-height:1.45}
-.wrap{max-width:1180px;margin:0 auto}
-header.top{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding-block:12px;border-bottom:1px solid var(--line)}
-.brand{display:flex;align-items:center;gap:9px;font-family:var(--display);font-weight:700;font-size:15px}
-.brand .dot{width:24px;height:24px;border-radius:7px;background:var(--accent);display:inline-block;box-shadow:inset 0 0 0 7px color-mix(in srgb,var(--accent) 82%,#000 0%),inset 0 0 14px rgba(255,255,255,.35)}
+.wrap{max-width:1280px;margin:0 auto}
+a{color:var(--info);text-decoration:none}
+a:hover{text-decoration:underline}
+header.top{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding-block:11px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:9px;font-family:var(--display);font-weight:700;font-size:15px;white-space:nowrap}
+.brand .dot{width:24px;height:24px;border-radius:7px;background:var(--accent);display:inline-block}
 .brand small{font-weight:500;color:var(--mut);font-size:10.5px;letter-spacing:.9px;text-transform:uppercase;margin-left:2px}
 .demo-badge{font-size:10.5px;letter-spacing:.6px;text-transform:uppercase;color:var(--warn);background:var(--warnbg);border-radius:999px;padding:4px 11px;white-space:nowrap;font-weight:600}
 .spacer{flex:1}
-.switch{display:flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:var(--panel)}
-.switch button{appearance:none;border:0;background:transparent;color:var(--mut);font:inherit;font-size:12.5px;padding:7px 13px;cursor:pointer}
-.switch button[aria-pressed="true"]{background:var(--fg);color:var(--bg);font-weight:600}
-button.act{appearance:none;font:inherit;font-size:12.5px;font-weight:600;color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer;white-space:nowrap}
-button.act:hover{border-color:var(--fg)}
-button.act.primary{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-button.act.ghostbad{color:var(--mut)}
-.subline{color:var(--mut);font-size:12px;padding-block:9px 0}
-.layout{display:grid;grid-template-columns:185px 1fr;gap:24px;padding-block:14px 0}
-nav.tabs{align-self:start;position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);display:flex;flex-direction:column;gap:2px}
-nav.tabs .grp{font-size:10px;letter-spacing:.9px;text-transform:uppercase;color:var(--mut);padding:12px 10px 4px;font-weight:600}
-nav.tabs .grp:first-child{padding-top:2px}
-nav.tabs button{appearance:none;border:0;background:transparent;color:var(--fg);font:inherit;font-size:13px;text-align:left;padding:7px 10px;border-radius:8px;cursor:pointer;display:block;width:100%}
-nav.tabs button:hover{background:var(--panel)}
-nav.tabs button[aria-pressed="true"]{background:var(--panel);font-weight:600;box-shadow:inset 0 0 0 1px var(--line)}
-nav.tabs button:focus-visible,.switch button:focus-visible,button.act:focus-visible,.callrow summary:focus-visible,.chips button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#search{font:inherit;font-size:13px;background:var(--panel);color:var(--fg);border:1px solid var(--line);border-radius:9px;padding:7px 12px;width:min(260px,100%)}
+#searchwrap{position:relative}
+#searchdrop{position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--panel);border:1px solid var(--line);border-radius:10px;z-index:30;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+#searchdrop[hidden]{display:none!important}
+#searchdrop button{display:block;width:100%;text-align:left;appearance:none;border:0;background:transparent;color:var(--fg);font:inherit;font-size:12.5px;padding:8px 12px;cursor:pointer}
+#searchdrop button:hover{background:var(--panel2)}
+#searchdrop .m{color:var(--mut);font-size:11px}
+select.loc{font:inherit;font-size:12.5px;background:var(--panel);color:var(--fg);border:1px solid var(--line);border-radius:9px;padding:7px 10px}
+.me{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--mut);white-space:nowrap}
+.me .av{width:26px;height:26px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:11px}
+.layout{display:grid;grid-template-columns:196px 1fr;gap:24px;padding-block:14px 0}
+nav.side{align-self:start;position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);display:flex;flex-direction:column;gap:2px}
+nav.side .grp{font-size:10px;letter-spacing:.9px;text-transform:uppercase;color:var(--mut);padding:13px 10px 4px;font-weight:600}
+nav.side .grp:first-child{padding-top:2px}
+nav.side a{display:block;color:var(--fg);font-size:13px;padding:7px 10px;border-radius:8px}
+nav.side a:hover{background:var(--panel);text-decoration:none}
+nav.side a.on{background:var(--panel);font-weight:600;box-shadow:inset 0 0 0 1px var(--line)}
 main{min-width:0}
-h2{font-family:var(--display);font-size:16px;margin:0 0 3px;font-weight:700}
-.panel-sub{color:var(--mut);font-size:12px;margin:0 0 14px}
-.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px;margin-bottom:16px}
-.tile{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:13px 15px}
+h2{font-family:var(--display);font-size:17px;margin:0 0 3px;font-weight:700}
+h3{font-family:var(--display);font-size:14px;margin:0 0 2px;font-weight:700}
+.crumb{color:var(--mut);font-size:12px;margin-bottom:10px}
+.crumb a{color:var(--mut)}
+.panel-sub{color:var(--mut);font-size:12px;margin:0 0 12px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:10px;margin-bottom:14px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:12px 14px;min-width:0}
 .tile .k{font-size:11px;color:var(--mut)}
-.tile .v{font-family:var(--display);font-size:25px;font-weight:700;margin-top:4px;font-variant-numeric:tabular-nums;letter-spacing:-.3px}
+.tile .v{font-family:var(--display);font-size:24px;font-weight:700;margin-top:4px;font-variant-numeric:tabular-nums;letter-spacing:-.3px}
 .tile .s{font-size:11px;color:var(--mut);margin-top:3px}
-.tile.hi .s{color:var(--good)}
-section.block{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:14px}
+.tile .s.good{color:var(--good)} .tile .s.bad{color:var(--bad)}
+section.block{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:14px;min-width:0}
+.cols2{display:grid;grid-template-columns:1fr 340px;gap:14px;align-items:start}
+.cols2 > *{min-width:0}
+@media (max-width:980px){ .cols2{grid-template-columns:1fr} }
 .rowlist{display:flex;flex-direction:column}
-.rowlist>*{padding:11px 0;border-top:1px solid var(--line)}
+.rowlist>*{padding:10px 0;border-top:1px solid var(--line)}
 .rowlist>*:first-child{border-top:0}
 .r{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;min-width:0}
-.r .grow{flex:1 1 230px;min-width:0}
-.r .ttl{font-weight:600;font-size:13.5px}
-.r .sub{color:var(--mut);font-size:12px;margin-top:2px}
-.rec{font-size:12px;margin-top:6px;background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:7px 10px;color:var(--mut)}
-.rec b{color:var(--fg)}
-.money{font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap;font-size:13px}
-.chip{display:inline-block;font-size:10.5px;letter-spacing:.2px;border-radius:999px;padding:3px 9px;background:var(--chipbg);color:var(--mut);white-space:nowrap;font-weight:600}
+.r .grow{flex:1 1 220px;min-width:0}
+.r .ttl{font-weight:600;font-size:13px}
+.r .sub{color:var(--mut);font-size:12px;margin-top:1px}
+.money{font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap;font-size:12.5px}
+.chip{display:inline-block;font-size:10.5px;border-radius:999px;padding:2.5px 9px;background:var(--chipbg);color:var(--mut);white-space:nowrap;font-weight:600}
 .chip.good{color:var(--good);background:var(--goodbg)}
 .chip.warn{color:var(--warn);background:var(--warnbg)}
 .chip.bad{color:var(--bad);background:var(--badbg)}
 .chip.info{color:var(--info);background:var(--infobg)}
 .chip.acc{color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent)}
-.chip.urgent{color:var(--bad);background:var(--badbg)}
-/* call log */
-.callrow{border-top:1px solid var(--line)}
-.callrow:first-child{border-top:0}
-.callrow summary{list-style:none;cursor:pointer;padding:11px 0}
-.callrow summary::-webkit-details-marker{display:none}
-.callrow .meta{font-size:11.5px;color:var(--mut);white-space:nowrap;font-variant-numeric:tabular-nums}
-.transcript{background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:10px 13px;margin:2px 0 12px;font-size:12.5px;color:var(--mut)}
-.transcript b{color:var(--fg);font-weight:600}
-.note{color:var(--mut);font-size:12px;margin-top:12px}
-.note b{color:var(--fg)}
-.srcline{color:var(--mut);font-size:11px;margin-top:10px}
-.q-head{display:flex;align-items:center;gap:10px;margin-bottom:2px}
-.q-count{font-family:var(--display);font-weight:700;color:var(--accent)}
-.decided-time{font-size:11px;color:var(--mut);white-space:nowrap}
-.empty{color:var(--mut);font-size:13px;padding:14px 0;font-style:italic}
-/* agent job cards */
-.jobs{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+button.act{appearance:none;font:inherit;font-size:12.5px;font-weight:600;color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer;white-space:nowrap}
+button.act:hover{border-color:var(--fg)}
+button.act.primary{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+button.act.ghostbad{color:var(--mut)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:var(--panel);margin-bottom:12px;flex-wrap:wrap}
+.seg button{appearance:none;border:0;background:transparent;color:var(--mut);font:inherit;font-size:12.5px;padding:7px 13px;cursor:pointer;white-space:nowrap}
+.seg button[aria-pressed="true"]{background:var(--chipbg);color:var(--fg);font-weight:600}
+table.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+table.tbl th{font-size:10.5px;letter-spacing:.5px;text-transform:uppercase;color:var(--mut);text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);font-weight:600;white-space:nowrap}
+table.tbl td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+table.tbl tr:last-child td{border-bottom:0}
+table.tbl td.num,table.tbl th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+table.tbl tr.click{cursor:pointer}
+table.tbl tr.click:hover td{background:var(--panel2)}
+.tscroll{overflow-x:auto}
+.between{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+/* charts */
+.chart{margin-top:8px}
+.chart svg{display:block;width:100%;height:auto}
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:8px;font-size:11.5px;color:var(--mut)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:9px;height:9px;border-radius:3px;display:inline-block}
+#tip{position:fixed;z-index:60;background:var(--fg);color:var(--bg);font-size:11.5px;padding:5px 9px;border-radius:7px;pointer-events:none;white-space:nowrap;font-variant-numeric:tabular-nums}
+#tip[hidden]{display:none!important}
+/* kanban */
+.board{display:flex;gap:10px;overflow-x:auto;padding-block:4px 6px;align-items:flex-start}
+.col{flex:0 0 232px;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:10px}
+.col .head{display:flex;align-items:center;gap:7px;padding:2px 4px 9px;font-size:12px}
+.col .head b{font-size:12.5px}
+.col .head .n{color:var(--mut)}
+.col .head .sum{margin-left:auto;color:var(--mut);font-variant-numeric:tabular-nums;font-size:11px}
+.sdot{width:8px;height:8px;border-radius:3px;flex:none}
+.cards{display:flex;flex-direction:column;gap:8px}
+.cardk{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.cardk .who{font-weight:600;font-size:13px}
+.cardk .sub{color:var(--mut);font-size:11.5px;margin-top:2px}
+.cardk .chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
+.cardk .next{font-size:11.5px;color:var(--mut);margin-top:7px;border-top:1px solid var(--line);padding-top:6px}
+/* agent jobs */
+.jobs{display:grid;grid-template-columns:repeat(auto-fill,minmax(252px,1fr));gap:10px}
 .job{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:13px 15px;display:flex;flex-direction:column;gap:7px}
 .job .head{display:flex;align-items:center;gap:8px}
 .job .head b{font-size:13px;flex:1;min-width:0}
@@ -112,582 +143,633 @@ section.block{background:var(--panel);border:1px solid var(--line);border-radius
 .tog::after{content:"";position:absolute;top:2px;right:2px;width:14px;height:14px;border-radius:50%;background:#fff}
 .job .what{font-size:12px;color:var(--mut)}
 .job .before{font-size:11.5px;color:var(--mut)}
-.job .before b{color:var(--fg);font-weight:600}
+.job .before b{color:var(--fg)}
 .job .stats{display:flex;gap:14px;border-top:1px solid var(--line);padding-top:8px;margin-top:auto}
-.job .stats div{min-width:0}
 .job .stats .k{font-size:10px;color:var(--mut)}
 .job .stats .v{font-weight:700;font-variant-numeric:tabular-nums;font-size:13.5px;font-family:var(--display)}
-footer{color:var(--mut);font-size:11.5px;padding-block:16px 8px;border-top:1px solid var(--line);margin-top:6px}
-/* assistant + live call */
-.between{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-#ai-panel[hidden],#ai-backdrop[hidden]{display:none!important}
-#ai-backdrop{position:fixed;inset:0;background:rgba(10,10,12,.4);z-index:40}
-#ai-panel{position:fixed;z-index:50;top:0;right:0;bottom:0;width:min(400px,100%);background:var(--panel);border-left:1px solid var(--line);display:flex;flex-direction:column}
-#ai-panel .head{display:flex;align-items:center;gap:8px;padding:14px 16px;border-bottom:1px solid var(--line);padding-top:calc(14px + env(safe-area-inset-top,0px))}
-#ai-panel .head b{font-family:var(--display)}
-#ai-log{flex:1;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:10px;min-height:0}
-.bub{max-width:92%;border-radius:11px;padding:9px 12px;font-size:13px;background:var(--panel2);border:1px solid var(--line)}
-.bub.user{align-self:flex-end;background:color-mix(in srgb,var(--accent) 14%,transparent);border-color:transparent}
-.bub .steps{display:flex;flex-direction:column;gap:5px;margin-top:7px;font-size:12px;color:var(--mut)}
-.bub .steps span::before{content:"✓ ";color:var(--good)}
-.bub .confirm{margin-top:9px}
-.chips{display:flex;flex-wrap:wrap;gap:6px;padding:10px 16px;border-top:1px solid var(--line)}
-.chips button{appearance:none;font:inherit;font-size:12px;background:var(--chipbg);border:1px solid var(--line);color:var(--fg);border-radius:999px;padding:6px 11px;cursor:pointer}
-.chips button:hover{border-color:var(--accent)}
-#ai-form{display:flex;gap:8px;padding:10px 16px calc(14px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line)}
-#ai-input{flex:1;min-width:0;font:inherit;background:var(--panel2);color:var(--fg);border:1px solid var(--line);border-radius:9px;padding:9px 12px}
+.rec{font-size:12px;margin-top:6px;background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:7px 10px;color:var(--mut)}
+.rec b{color:var(--fg)}
+.q-count{font-family:var(--display);font-weight:700;color:var(--accent)}
+.decided-time{font-size:11px;color:var(--mut);white-space:nowrap}
+/* patient profile */
+.banner{background:var(--badbg);border:1px solid color-mix(in srgb,var(--bad) 30%,transparent);border-radius:11px;padding:12px 15px;margin-bottom:14px}
+.banner .r{align-items:center}
+.banner b.amt{font-family:var(--display);font-size:16px}
+.facts{display:flex;flex-direction:column}
+.facts>div{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid var(--line);font-size:12.5px}
+.facts>div:first-child{border-top:0}
+.facts .k{color:var(--mut)}
+.facts .v{text-align:right;min-width:0;font-weight:500}
+.toggle{width:34px;height:20px;border-radius:999px;background:var(--chipbg);border:1px solid var(--line);position:relative;cursor:pointer;flex:none;appearance:none}
+.toggle:checked{background:var(--good)}
+.toggle::after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;transition:left .12s}
+.toggle:checked::after{left:16px}
+.strip{display:flex;gap:2px;align-items:flex-end;height:46px;margin-top:6px}
+.strip i{flex:1;background:var(--c3);border-radius:2px 2px 0 0;min-width:2px}
+.empty{color:var(--mut);font-size:13px;padding:12px 0;font-style:italic}
+.srcline{color:var(--mut);font-size:11px;margin-top:10px}
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));background:var(--fg);color:var(--bg);font-size:12.5px;padding:9px 16px;border-radius:9px;z-index:70;font-weight:600}
+#toast[hidden]{display:none!important}
+/* ringing */
 .ringing{border:1px solid var(--accent);border-radius:11px;padding:12px 14px;margin-bottom:12px;background:color-mix(in srgb,var(--accent) 6%,transparent)}
 .pulse{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--good);margin-right:7px;animation:pul 1s infinite}
 @keyframes pul{50%{opacity:.25}}
 .ringing .tline{font-size:12.5px;margin-top:7px;color:var(--mut)}
 .ringing .tline b{color:var(--fg)}
 @media (prefers-reduced-motion:reduce){.pulse{animation:none}}
-@media (max-width:760px){
+.meta{font-size:11.5px;color:var(--mut);white-space:nowrap;font-variant-numeric:tabular-nums}
+.callrow{border-top:1px solid var(--line)}
+.callrow:first-child{border-top:0}
+.callrow summary{list-style:none;cursor:pointer;padding:10px 0}
+.callrow summary::-webkit-details-marker{display:none}
+.transcript{background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:10px 13px;margin:2px 0 12px;font-size:12.5px;color:var(--mut)}
+.transcript b{color:var(--fg)}
+footer{color:var(--mut);font-size:11.5px;padding-block:16px 8px;border-top:1px solid var(--line);margin-top:6px}
+@media (max-width:820px){
   .layout{grid-template-columns:1fr;gap:8px}
-  nav.tabs{flex-direction:row;overflow-x:auto;position:static;padding-bottom:4px;gap:6px;align-items:center}
-  nav.tabs .grp{display:none}
-  nav.tabs button{white-space:nowrap;width:auto}
+  nav.side{flex-direction:row;overflow-x:auto;position:static;padding-bottom:4px;gap:6px;align-items:center}
+  nav.side .grp{display:none}
+  nav.side a{white-space:nowrap}
 }
+/* campaign builder */
+.rule{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:8px 0;border-top:1px solid var(--line);font-size:12.5px}
+.rule:first-child{border-top:0}
+.rule .pillbox{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:6px 10px}
+textarea.aud{font:inherit;font-size:13px;background:var(--panel2);color:var(--fg);border:1px solid var(--line);border-radius:9px;padding:10px 12px;width:100%;min-height:58px;resize:vertical}
+.excl{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 13px;font-size:12px;color:var(--mut)}
+.excl b{color:var(--fg)}
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap">
 
 <div class="wrap">
   <header class="top">
-    <span class="brand"><span class="dot"></span>Six Harmony <small>OS</small></span>
+    <span class="brand"><span class="dot"></span>Summit Eye Care <small>OS</small></span>
     <span class="demo-badge">Demo · sample data</span>
     <span class="spacer"></span>
-    <div class="switch" role="group" aria-label="Workspace">
-      <button type="button" id="sw-clinic" aria-pressed="true">Summit Eye Care</button>
-      <button type="button" id="sw-mech" aria-pressed="false">Kestrel Mechanical</button>
-    </div>
-    <button type="button" class="act" id="ai-open">✦ Assistant</button>
+    <span id="searchwrap"><input id="search" type="search" placeholder="Search patients…  ⌘K" autocomplete="off"><div id="searchdrop" hidden></div></span>
+    <select class="loc" id="loc" aria-label="Location">
+      <option value="all">All locations</option>
+      <option value="Stone Oak">Stone Oak</option>
+      <option value="Medical Center">Medical Center</option>
+    </select>
+    <span class="me"><span class="av">D</span>Dana · Operations</span>
   </header>
-  <p class="subline" id="subline"></p>
 
   <div class="layout">
-    <nav class="tabs" aria-label="Sections">
-      <div class="grp">Operations</div>
-      <button type="button" data-tab="overview" aria-pressed="true">Overview</button>
-      <button type="button" data-tab="niche" id="nichetab-btn">Recalls</button>
-      <div class="grp">Growth</div>
-      <button type="button" data-tab="calls">AI receptionist</button>
-      <div class="grp">Automation</div>
-      <button type="button" data-tab="agent">Back-office agent</button>
-    </nav>
-
-    <main>
-      <!-- OVERVIEW -->
-      <div data-panel="overview">
-        <div class="tiles" id="tiles"></div>
-        <section class="block">
-          <h2>Needs attention</h2>
-          <p class="panel-sub" id="att-sub"></p>
-          <div class="rowlist" id="attention"></div>
-        </section>
-      </div>
-
-      <!-- CALLS -->
-      <div data-panel="calls" hidden>
-        <section class="block">
-          <div class="between"><h2>AI receptionist — call log</h2><button type="button" class="act primary" id="simcall">▶ Simulate incoming call</button></div>
-          <p class="panel-sub" id="calls-sub"></p>
-          <div id="livecall"></div>
-          <div id="calls"></div>
-          <p class="note"><b>Every row has a recording and transcript.</b> Tap a call to read how it was handled. Anything uncertain is transferred to a person — it never guesses on money or medical questions.</p>
-        </section>
-      </div>
-
-      <!-- AGENT -->
-      <div data-panel="agent" hidden>
-        <div class="tiles" id="agent-tiles"></div>
-        <section class="block">
-          <div class="q-head"><h2>Waiting on you</h2><span class="q-count" id="qcount"></span></div>
-          <p class="panel-sub" id="safety"></p>
-          <div class="rowlist" id="waiting"></div>
-        </section>
-        <section class="block">
-          <h2>What the agent does</h2>
-          <p class="panel-sub" id="jobs-sub"></p>
-          <div class="jobs" id="jobs"></div>
-        </section>
-        <section class="block">
-          <h2>Decided</h2>
-          <p class="panel-sub">What was handled after approval, most recent first.</p>
-          <div class="rowlist" id="decided"></div>
-        </section>
-      </div>
-
-      <!-- NICHE -->
-      <div data-panel="niche" hidden>
-        <div class="tiles" id="niche-tiles"></div>
-        <section class="block">
-          <h2 id="niche-h2"></h2>
-          <p class="panel-sub" id="niche-sub"></p>
-          <div class="rowlist" id="niche-list"></div>
-          <p class="srcline" id="niche-src"></p>
-        </section>
-      </div>
-
-      <footer>Demo console by Six Harmony — growth partners for practices, contractors and gyms. All names and figures are sample data. Your console is built on your real numbers in week one.</footer>
-    </main>
+    <nav class="side" id="nav"></nav>
+    <main id="main"></main>
   </div>
 </div>
-
-<div id="ai-backdrop" hidden></div>
-<aside id="ai-panel" hidden aria-label="Console assistant">
-  <div class="head"><b>Assistant</b><span class="chip acc">demo — scripted</span><span class="spacer"></span><button type="button" class="act" id="ai-close">Close</button></div>
-  <div id="ai-log"></div>
-  <div class="chips" id="ai-chips"></div>
-  <form id="ai-form"><input id="ai-input" type="text" placeholder="Ask the console…" autocomplete="off"><button type="button" class="act primary" id="ai-send">Send</button></form>
-</aside>
+<div id="tip" hidden></div>
+<div id="toast" hidden></div>
 
 <script>
-var DATA = {
-  clinic: {
-    subline: "Summit Eye Care · 2 locations · sample week of Nov 3–9",
-    nicheTab: "Recalls",
-    safety: "It never charges a card, cancels an appointment or texts a patient list without a person. Decisions below carry the agent's recommendation — you approve or decline.",
-    jobsSub: "6 of 6 jobs on. Switch one off and the desk goes back to doing it by hand.",
-    tiles: [
-      {k:"Calls answered", v:"46", s:"of 46 — none missed", hi:true},
-      {k:"After hours + lunch", v:"17", s:"caught outside desk hours"},
-      {k:"Appointments booked", v:"23", s:"incl. 4 saved cancellations"},
-      {k:"Desk hours saved", v:"12.5", s:"this week"},
-      {k:"Revenue protected", v:"$9,840", s:"booked value this month", hi:true}
-    ],
-    attSub: "What the agent flagged this morning. Each item is one tap to act on.",
-    attention: [
-      {t:"3 payments failed overnight — R. Soto, M. Price, K. Lam", s:"Cards declined on recall plans · retry drafted for their payday", chip:["urgent","Billing"], m:"$412", act:"Retry + text"},
-      {t:"14 patients overdue for annual exam", s:"No visit in 14+ months, all with vision plans on file", chip:["warn","Recalls"], m:"$6,104/yr", act:"Queue recall texts"},
-      {t:"Tomorrow has two empty chairs — 9:20 and 2:40", s:"Cancellations from D. Whitfield and A. Boone · waitlist has 6 matches", chip:["warn","Schedule"], m:"$600", act:"Offer to waitlist"},
-      {t:"5 contact-lens wearers due to reorder", s:"Last order 11+ months ago", chip:["info","Optical"], m:"$2,180/yr", act:"Send reorder link"}
-    ],
-    callsSub: "Last 24 hours. Outcome, caller and what it was worth — tap any call for the transcript.",
-    calls: [
-      {time:"7:02 AM", who:"S. Chen", chips:[["info","Message"]], what:"Asked if her glasses were ready — logged a task for the desk", val:"—", dur:"0:49",
-       tr:"<b>AI:</b> Our optical team confirms orders after 9 — I've left them a note to call you first thing. Anything else I can help with?"},
-      {time:"8:12 AM", who:"María G.", chips:[["acc","Español"],["good","Booked"]], what:"New patient exam, Thursday 2:40 — verified VSP, switched to Spanish mid-call", val:"$300", dur:"2:51",
-       tr:"<b>Caller:</b> ¿Puedo hacer una cita para un examen? <b>AI:</b> Claro que sí — tenemos el jueves a las 2:40. ¿Me confirma su seguro? <b>Caller:</b> VSP. <b>AI:</b> Perfecto, está confirmada su cita."},
-      {time:"12:34 PM", who:"R. Patel", chips:[["warn","Lunch"],["good","Booked"]], what:"Annual exam + contact lens fitting while the desk was at lunch", val:"$485", dur:"3:12",
-       tr:"<b>AI:</b> The front desk is with patients, but I can book you right now. For an exam plus a lens fitting the next opening is Tuesday at 10:15 — does that work?"},
-      {time:"12:41 PM", who:"Unknown", chips:[["warn","Lunch"],["info","Answered"]], what:"Hours, parking and directions — answered, no human needed", val:"—", dur:"0:58",
-       tr:"<b>AI:</b> We're open until 6 today. Parking is behind the building off Vance — the entrance faces the lot."},
-      {time:"3:05 PM", who:"D. Whitfield", chips:[["good","Cancel saved"]], what:"Called to cancel Friday — rebooked to Friday 9:20 instead of losing the slot", val:"$300 kept", dur:"1:47",
-       tr:"<b>Caller:</b> I need to cancel Friday afternoon. <b>AI:</b> No problem. Before I do — Friday morning at 9:20 just opened. Would that work instead? <b>Caller:</b> …Actually yes."},
-      {time:"6:48 PM", who:"K. Alvarez", chips:[["acc","After hours"],["good","Booked"]], what:"Kids' exam for Saturday — booked after close", val:"$240", dur:"2:05",
-       tr:"<b>AI:</b> We have Saturday at 11:00 or 11:40 for a children's exam. <b>Caller:</b> 11 works. <b>AI:</b> Booked — you'll get a confirmation text in a moment."},
-      {time:"9:17 PM", who:"J. Moore", chips:[["acc","After hours"],["bad","Urgent → routed"]], what:"Flashes and floaters — followed the urgent protocol, routed to the on-call line", val:"—", dur:"1:21",
-       tr:"<b>AI:</b> Sudden flashes and new floaters need same-day attention. I'm connecting you to the doctor's on-call line now — please stay on the line."}
-    ],
-    agentTiles: [
-      {k:"Tasks handled, 30 days", v:"302", s:"94 this week", hi:true},
-      {k:"Staff hours saved, 30 days", v:"18.4", s:"about 0.1 full-time person"},
-      {k:"Recovered, 30 days", v:"$1,240", s:"failed payments + saved cancels", hi:true},
-      {k:"Decisions waiting on you", v:"3", s:"charges, patient texts and sign-offs"}
-    ],
-    waiting: [
-      {t:"Send recall texts to 14 overdue patients", s:"“Hi [name], it's been over a year since your last eye exam at Summit. Tap to pick a time.”", chip:["warn","Recalls"], m:"$6,104/yr",
-       rec:"<b>Agent recommends: Approve.</b> All 14 have texting consent on file and open slots match their usual days."},
-      {t:"Retry 3 failed payments and notify patients", s:"R. Soto, M. Price, K. Lam — cards declined overnight", chip:["urgent","Billing"], m:"$412",
-       rec:"<b>Agent recommends: Approve.</b> All three decline codes were insufficient funds; retry is timed to each patient's usual payment day."},
-      {t:"Offer tomorrow's 2 open slots to the waitlist", s:"6 waitlisted patients match the open exam types", chip:["warn","Schedule"], m:"$600",
-       rec:"<b>Agent recommends: Approve.</b> First-come offer, auto-closes when a slot fills. No double-booking possible."}
-    ],
-    decided: [
-      {t:"Confirmed 31 appointments by text", s:"Reminder chain for next week", time:"Today 6:00 AM"},
-      {t:"Sent 12 contact-lens reorder reminders", s:"3 reorders placed the same day — $1,308/yr", time:"Yesterday"},
-      {t:"Rebooked 6 no-shows from last week", s:"4 confirmed for this week", time:"Nov 7"}
-    ],
-    jobs: [
-      {n:"After-hours & lunch answering", money:false, what:"Answers calls 12–1 and 5 PM–8 AM, books exams into open slots and routes urgent symptoms to on-call.", before:"Overnight voicemails waited until the desk opened; most callers had already booked elsewhere.", runs:"97", hrs:"8.1 hr", each:"5 min"},
-      {n:"Cancel-save offers", money:false, what:"When someone calls to cancel, offers the next opening before releasing the slot.", before:"The desk took the cancellation and the chair sat empty.", runs:"11", hrs:"1.1 hr", each:"6 min"},
-      {n:"Recall outreach", money:false, what:"Works the overdue-exam list by text and call until patients rebook or opt out.", before:"Recall reports were printed monthly and worked when the desk had time — usually never.", runs:"48", hrs:"6.4 hr", each:"8 min"},
-      {n:"Payment retries", money:true, what:"Retries declined cards on the patient's usual payment day, up to 21 days, and texts a secure update link for dead cards.", before:"The desk called each patient about a declined card and typed the new number over the phone.", runs:"29", hrs:"2.9 hr", each:"6 min"},
-      {n:"Reorder reminders", money:false, what:"Texts contact-lens wearers a reorder link when their supply window lapses.", before:"Reorders happened only when the patient remembered.", runs:"12", hrs:"1.0 hr", each:"5 min"},
-      {n:"Waitlist backfill", money:false, what:"When a cancellation sticks, offers the slot to matching waitlist patients, first-come.", before:"The desk called down the waitlist between check-ins — when there was time.", runs:"9", hrs:"1.5 hr", each:"10 min"}
-    ],
-    nicheTiles: [
-      {k:"Patients overdue", v:"38", s:"no exam in 14+ months", hi:true},
-      {k:"Value at stake", v:"$16,568", s:"per year if they lapse", hi:true},
-      {k:"Rebooked so far", v:"11", s:"from the first recall pass"},
-      {k:"No response yet", v:"19", s:"next touch scheduled"}
-    ],
-    nicheH2: "Overdue recall list",
-    nicheSub: "Patients slide away quietly — they don't cancel, they just stop coming back. The agent works this list until they're rebooked or they opt out.",
-    nicheList: [
-      {t:"T. Okafor", s:"Last exam Jul 2025 · VSP · contact lens wearer", chip:["good","Rebooked — Tue 9:00"], m:"$436/yr"},
-      {t:"L. Ramos", s:"Last exam May 2025 · EyeMed", chip:["info","Texted — awaiting reply"], m:"$300/yr"},
-      {t:"A. Boone", s:"Last exam Apr 2025 · self-pay · CL wearer", chip:["info","Texted — awaiting reply"], m:"$436/yr"},
-      {t:"P. Nguyen", s:"Last exam Mar 2025 · VSP", chip:["warn","No response ×2 — call queued"], m:"$300/yr"},
-      {t:"G. Hestan", s:"Last exam Jan 2025 · Medicare + supplement", chip:["warn","No response ×2 — call queued"], m:"$300/yr"},
-      {t:"M. Delgado", s:"Last exam Dec 2024 · EyeMed · CL wearer", chip:["bad","Lapsing — final touch this week"], m:"$436/yr"}
-    ],
-    nicheSrc: "A contact-lens wearer is worth $436–$485/yr in profit (Contact Lens Institute, 2026). Sample list — your console works your real recall report."
-  },
+"use strict";
+/* ============ utilities ============ */
+var $ = function(s, el){ return (el||document).querySelector(s); };
+var $$ = function(s, el){ return Array.prototype.slice.call((el||document).querySelectorAll(s)); };
+function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){return({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"})[c];}); }
+function money(n,dec){ return "$" + Number(n).toLocaleString("en-US",{minimumFractionDigits:dec||0,maximumFractionDigits:dec||0}); }
+function pct(n,d){ return (n).toFixed(d==null?1:d) + "%"; }
+function toast(m){ var t=$('#toast'); t.textContent=m; t.hidden=false; clearTimeout(toast._x); toast._x=setTimeout(function(){t.hidden=true;},2400); }
 
-  mech: {
-    subline: "Kestrel Mechanical · commercial HVAC-R · sample week of Nov 3–9",
-    nicheTab: "Bids & invoices",
-    safety: "It never charges, credits, dispatches billing or sends a collections step without a person. Decisions below carry the agent's recommendation — you approve or decline.",
-    jobsSub: "6 of 6 jobs on. Switch one off and the office goes back to doing it by hand.",
-    tiles: [
-      {k:"Calls answered", v:"38", s:"of 38 — none missed", hi:true},
-      {k:"After hours", v:"16", s:"nights + weekend"},
-      {k:"Jobs booked", v:"19", s:"service + PM visits"},
-      {k:"Bid requests captured", v:"4", s:"$41K open pipeline", hi:true},
-      {k:"Office hours saved", v:"9.2", s:"this week"}
-    ],
-    attSub: "What the agent flagged this morning. Each item is one tap to act on.",
-    attention: [
-      {t:"5 invoices past 45 days — Westline 63d, Oakfield 51d, Morales 46d", s:"Chase sequence drafted: reminder → statement → call", chip:["urgent","Receivables"], m:"$18,420", act:"Start chase"},
-      {t:"3 maintenance agreements expire this month", s:"Westline Plaza, Mercy campus, Brookfield — renewal offers drafted at current rates", chip:["warn","Contracts"], m:"$21,600/yr", act:"Send renewals"},
-      {t:"2 bids aging past 7 days — Harlan Builds, Mercy campus", s:"No answer since the bid went out", chip:["warn","Bids"], m:"$30,000", act:"Queue follow-up"},
-      {t:"M. Reyes's EPA 608 cert expires in 3 weeks", s:"Renewal window opens Monday", chip:["info","Compliance"], m:"—", act:"Remind tech"}
-    ],
-    callsSub: "Last 24 hours. Outcome, caller and what it was worth — tap any call for the transcript.",
-    calls: [
-      {time:"5:42 AM", who:"Night supervisor — food plant", chips:[["acc","After hours"],["bad","Emergency → dispatched"]], what:"Walk-in freezer down — on-call tech dispatched, ETA 40 min, site notes attached", val:"Emergency rate", dur:"2:14",
-       tr:"<b>Caller:</b> Our walk-in's at 48 degrees and climbing. <b>AI:</b> That's an emergency dispatch. I have your site on file — dock 3 entrance, ask for the supervisor. Marcus is on call; he'll be there in about 40 minutes. You'll get his number by text now."},
-      {time:"9:18 AM", who:"GC estimator — Harlan Builds", chips:[["good","Bid captured"]], what:"RTU replacement, 12 tons — plans requested, bid logged to pipeline", val:"$18,000 est", dur:"3:40",
-       tr:"<b>AI:</b> I'll get this to our estimator today. Can you send plans to bids@? What's your award date? <b>Caller:</b> End of the month. <b>AI:</b> Noted — you'll hear from us within 48 hours."},
-      {time:"11:03 AM", who:"Property manager — Westline Plaza", chips:[["good","Booked"]], what:"Quarterly PM visit scheduled for both rooftop units", val:"$850", dur:"1:58",
-       tr:"<b>AI:</b> Your last quarterly was August 12. I have Thursday morning open — the same crew that knows your roof access."},
-      {time:"1:26 PM", who:"Crew — Morales site", chips:[["info","Message"]], what:"Parts availability question — routed to the office with the part number logged", val:"—", dur:"1:05",
-       tr:"<b>AI:</b> I've logged the compressor part number and flagged it urgent for the office. They'll call the supply house and text the crew lead."},
-      {time:"4:55 PM", who:"School district facilities", chips:[["good","Bid captured"]], what:"AHU coil swap over winter break — site walk requested", val:"$12,000 est", dur:"2:47",
-       tr:"<b>AI:</b> Winter break works well for that scope. I can set a site walk Friday at 7 AM before classes — who should our estimator ask for?"},
-      {time:"8:30 PM", who:"Tenant — Oakfield offices", chips:[["acc","After hours"],["bad","Emergency → dispatched"]], what:"No heat, server room overheating risk — dispatched per the building's protocol", val:"Emergency rate", dur:"1:52",
-       tr:"<b>AI:</b> Your building's after-hours protocol authorizes dispatch for HVAC failures affecting server rooms. Tech is en route; building engineer has been texted."},
-      {time:"7:15 AM", who:"J. Herrera", chips:[["acc","Español"],["good","Booked"]], what:"Site walkthrough for a restaurant build-out — booked in Spanish", val:"Walk scheduled", dur:"2:20",
-       tr:"<b>Caller:</b> Necesito una cotización para un restaurante nuevo. <b>AI:</b> Con gusto — ¿le parece el martes a las 8 para visitar el sitio?"}
-    ],
-    agentTiles: [
-      {k:"Tasks handled, 30 days", v:"214", s:"61 this week", hi:true},
-      {k:"Office hours saved, 30 days", v:"11.6", s:"about 0.07 full-time person"},
-      {k:"Recovered, 30 days", v:"$3,850", s:"invoice chases collected", hi:true},
-      {k:"Decisions waiting on you", v:"3", s:"money moves and client messages"}
-    ],
-    waiting: [
-      {t:"Start the chase sequence on 5 overdue invoices", s:"Westline Plaza, Oakfield, Morales GC + 2 more — reminder → statement → call, a week apart", chip:["urgent","Receivables"], m:"$18,420",
-       rec:"<b>Agent recommends: Approve.</b> All five are past the grace window; two paid same-day last time a statement landed."},
-      {t:"Send 3 maintenance renewals", s:"Current rates held — Westline, Mercy campus, Brookfield expire this month", chip:["warn","Contracts"], m:"$21,600/yr",
-       rec:"<b>Agent recommends: Approve.</b> All three renewed on time last year; letting them lapse reopens the bid to competitors."},
-      {t:"Follow up both aging bids", s:"“Checking you have everything you need on our number” — Harlan Builds, Mercy campus", chip:["warn","Bids"], m:"$30,000",
-       rec:"<b>Agent recommends: Approve.</b> Harlan's award decision is end of month; silence past day 7 halves win rates."}
-    ],
-    decided: [
-      {t:"Chased 9 invoices → $3,850 collected", s:"Two paid the same day the statement landed", time:"This week"},
-      {t:"Confirmed 14 PM visits for November", s:"Routes grouped by side of town", time:"Nov 5"},
-      {t:"Logged 4 bid requests to the pipeline", s:"All acknowledged within the hour", time:"Nov 4"}
-    ],
-    jobs: [
-      {n:"After-hours answering & dispatch", money:false, what:"Answers nights and weekends, qualifies emergencies against each site's protocol and dispatches the on-call tech.", before:"Overnight calls hit a voicemail the office cleared at 7 AM; emergencies went to competitors.", runs:"64", hrs:"5.9 hr", each:"6 min"},
-      {n:"Bid acknowledgment & follow-up", money:false, what:"Logs every bid request, acknowledges inside the hour, and follows up on a schedule until award.", before:"Bid requests sat in voicemail; follow-ups happened when the estimator remembered.", runs:"17", hrs:"2.3 hr", each:"8 min"},
-      {n:"Invoice chase", money:true, what:"Runs reminder → statement → call on invoices past 45 days, timed a week apart.", before:"The office chased invoices at month-end, oldest first, phone tag for days.", runs:"14", hrs:"3.5 hr", each:"15 min"},
-      {n:"PM scheduling", money:false, what:"Books quarterly maintenance visits and groups routes by side of town.", before:"PM visits were scheduled off a spreadsheet, one call at a time.", runs:"23", hrs:"2.7 hr", each:"7 min"},
-      {n:"Crew & parts messages", money:false, what:"Takes parts questions from crews, logs part numbers and flags the office.", before:"Crews called the office, the office called the supply house, the crew waited.", runs:"31", hrs:"1.8 hr", each:"4 min"},
-      {n:"Agreement renewals", money:true, what:"Drafts renewal offers before maintenance agreements lapse and sends after approval.", before:"Lapsed agreements were noticed when the client called someone else.", runs:"6", hrs:"1.2 hr", each:"12 min"}
-    ],
-    nicheTiles: [
-      {k:"Open bid pipeline", v:"$41,000", s:"4 live bids", hi:true},
-      {k:"Past 45 days", v:"$18,420", s:"5 invoices in the chase", hi:true},
-      {k:"Avg. days to paid", v:"47", s:"down from 58 at setup"},
-      {k:"Renewals pending", v:"3", s:"$21,600/yr on the table"}
-    ],
-    nicheH2: "Bids & invoice aging",
-    nicheSub: "Bids die from silence and invoices age in a drawer. The agent acknowledges every bid inside an hour and chases every invoice on a schedule.",
-    nicheList: [
-      {t:"RTU replacement — Harlan Builds", s:"Bid sent Nov 4 · award end of month", chip:["info","Acknowledged — follow-up queued"], m:"$18,000"},
-      {t:"Boiler retube — Mercy campus", s:"Bid sent Oct 30 · aging 8 days", chip:["warn","Follow-up waiting on you"], m:"$12,000"},
-      {t:"AHU coils — school district", s:"Site walk Friday 7 AM", chip:["good","Site walk booked"], m:"$12,000 est"},
-      {t:"Invoice #2231 — Westline Plaza", s:"63 days outstanding", chip:["bad","Chase step 3 — call"], m:"$6,140"},
-      {t:"Invoice #2258 — Oakfield offices", s:"51 days outstanding", chip:["warn","Chase step 2 — statement"], m:"$4,890"},
-      {t:"Invoice #2274 — Morales GC", s:"46 days outstanding", chip:["warn","Chase step 1 — reminder"], m:"$7,390"}
-    ],
-    nicheSrc: "Construction waits ~51 days on average to get paid (Rabbet payments report). Sample list — your console works your real A/R and bid log."
+/* seeded PRNG */
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;}}
+var rnd = mulberry32(20261115);
+function ri(a,b){ return a + Math.floor(rnd()*(b-a+1)); }
+function pick(arr){ return arr[Math.floor(rnd()*arr.length)]; }
+function wpick(pairs){ var t=0,i; for(i=0;i<pairs.length;i++) t+=pairs[i][1]; var x=rnd()*t; for(i=0;i<pairs.length;i++){ x-=pairs[i][1]; if(x<=0) return pairs[i][0]; } return pairs[pairs.length-1][0]; }
+
+/* ============ mock data engine ============ */
+var FIRST=["Ana","Anthony","Ashley","Brianna","Cameron","Courtney","Erin","Francesca","Gabriela","Hannah","James","Jose","Olivia","Morgan","Kevin","Camila","Sophia","Zachary","Austin","Melissa","Ava","Ryan","Joseph","Brian","Emma","Luis","Madison","Allison","Megan","Steven","Paul","Carlos","Evan","Connor","Nathan","Sokha","Shannon","Rafael","Nicholas","Colleen","Gianna","Molly","Hannah","Marco","Priya","Wei","Dmitri","Fatima","Noor","Elena","Tariq","Ines","Mateo","Lucia","Diego","Rosa","Hector","Marisol","Tomas","Alondra"];
+var LAST=["Allen","Garcia","Smith","Johnson","Martinez","Lee","Nguyen","Patel","Brown","Davis","Rodriguez","Lopez","Gonzalez","Wilson","Anderson","Thomas","Taylor","Moore","Jackson","Martin","Perez","Thompson","White","Sanchez","Ramirez","Torres","Flores","Rivera","Gomez","Diaz","Reyes","Cruz","Ortiz","Morales","Gutierrez","Chavez","Ramos","Herrera","Medina","Castillo","Vargas","Soto","Delgado","Pena","Rios","Alvarado","Sandoval","Fuentes","Maldonado","Salazar"];
+var PLANS=[["Exam Plan",12.99,28],["Vision Plan",24.99,38],["Vision + Contacts",39.99,24],["Family Plan",59.99,10]];
+var SOURCES=["Walk-in","Website","Referral","Google","Instagram","Other"];
+var SRCW=[["Walk-in",24],["Website",23],["Referral",20],["Google",12],["Instagram",9],["Other",12]];
+var LOCS=["Stone Oak","Medical Center"];
+var MONTHS=["Dec","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov"];
+var NOW=new Date(2026,10,15); /* fixed demo clock: Sun Nov 15, 2026 */
+
+var P=[]; /* patients */
+(function gen(){
+  var used={};
+  for(var i=0;i<1870;i++){
+    var fn=pick(FIRST), ln=pick(LAST), nm=fn+" "+ln;
+    var k=nm; if(used[k]){ nm=fn+" "+ln+"-"+pick(LAST); } used[k]=1;
+    var plan=wpick(PLANS.map(function(p){return [p,p[2]];}));
+    var status=wpick([["active",86],["past_due",5],["paused",5],["cancelled",4]]);
+    var monthsIn=ri(0,36);
+    var loc=wpick([["Stone Oak",54],["Medical Center",46]]);
+    var src=wpick(SRCW);
+    var engaged=rnd();
+    var v30 = status==="cancelled"?0 : status==="paused"?0 : Math.max(0, Math.round(engaged*4 + (rnd()<.2?2:0) - (status==="past_due"?1:0)));
+    var lastV = status==="cancelled"? ri(40,300) : status==="paused"? ri(20,90) : v30>0? ri(0,12) : ri(13,45);
+    var cl = plan[0].indexOf("Contacts")>-1 || rnd()<.18;
+    /* ledger: last 12 months, newest first */
+    var led=[], mAgo, declinedOpen=0;
+    for(mAgo=0; mAgo<Math.min(12,monthsIn+1); mAgo++){
+      if(status==="cancelled" && mAgo < ri(1,6)) continue;
+      var st="Paid";
+      if(status==="past_due" && mAgo<2){ st="Declined"; declinedOpen+=plan[1]; }
+      else if(rnd()<.06){ st= rnd()<.65 ? "Recovered" : "Declined→written off"; }
+      led.push({mAgo:mAgo, desc:plan[0]+" dues", amt:plan[1], st:st});
+    }
+    P.push({id:"p"+(1000+i), name:nm, email:(fn+"."+ln).toLowerCase().replace(/[^a-z.]/g,"")+ri(1,99)+"@"+pick(["gmail.com","yahoo.com","icloud.com","hotmail.com","comcast.net"]),
+      phone:"(210) 555-0"+String(ri(100,199)), plan:plan[0], dues:plan[1], status:status, monthsIn:monthsIn, loc:loc, src:src,
+      v30:v30, lastV:lastV, cl:cl, led:led, pastDue: status==="past_due" ? +(declinedOpen+15).toFixed(2) : 0,
+      agree:"#"+ri(100000,119999), card:pick(["Visa","Amex","MC"])+" •"+ri(1000,9999)});
   }
+})();
+
+function inLoc(p){ return LOC==="all" || p.loc===LOC; }
+var LOC="all";
+function A(){ return P.filter(function(p){return p.status!=="cancelled" && inLoc(p);}); }
+function agg(){
+  var act=A(), pd=act.filter(function(p){return p.status==="past_due";});
+  var dues=act.reduce(function(s,p){return s+p.dues;},0);
+  var pdSum=pd.reduce(function(s,p){return s+p.pastDue;},0);
+  var checkToday = Math.round(act.length*0.062);
+  return {active:act.length, dues:dues, pd:pd, pdSum:pdSum, pdCount:pd.length,
+    collected: dues*0.52 , nextDraft: dues*0.985, checkToday:checkToday, paused:P.filter(function(p){return p.status==="paused"&&inLoc(p);}).length };
+}
+/* monthly series (deterministic curves) */
+function series12(base, growth, wobble, seedi){
+  var r=mulberry32(99+seedi), out=[], v=base;
+  for(var i=0;i<12;i++){ out.push(Math.round(v)); v = v*(1+growth) + (r()-0.5)*wobble*base; }
+  return out;
+}
+var S = {
+  members: series12(1520, 0.016, 0.01, 1),
+  collected: series12(41200, 0.012, 0.05, 2).map(function(v){return v;}),
+  recovered: series12(1400, 0.02, 0.3, 3),
+  cancels: [21,24,18,16,19,15,17,14,16,13,15,9],
+  joins: (function(){ var out=[]; for(var m=0;m<12;m++){ var tot=ri(38,64); var row={}; var rem=tot;
+      SOURCES.forEach(function(s,i){ var share=[0.24,0.23,0.20,0.12,0.09,0.12][i]; var n= i===5? rem : Math.round(tot*share*(0.8+rnd()*0.4)); n=Math.min(n,rem); row[s]=n; rem-=n; });
+      out.push(row);} return out; })(),
+  optical30: series12(0,0,0,4).map(function(){return ri(380,980);})
 };
 
-var niche = "clinic", tab = "overview";
-var $ = function(id){ return document.getElementById(id); };
-function chipHTML(c){ return '<span class="chip ' + c[0] + '">' + c[1] + '</span>'; }
-function tilesHTML(arr){
-  return arr.map(function(t){
-    return '<div class="tile' + (t.hi ? ' hi' : '') + '"><div class="k">' + t.k + '</div><div class="v">' + t.v + '</div><div class="s">' + t.s + '</div></div>';
-  }).join('');
-}
-function rowHTML(x, btnLabel, btnIdx){
-  return '<div><div class="r"><div class="grow"><div class="ttl">' + x.t + '</div><div class="sub">' + x.s + '</div></div>'
-    + (x.chip ? chipHTML(x.chip) : '')
-    + (x.m && x.m !== "—" ? '<span class="money">' + x.m + '</span>' : '')
-    + (btnLabel ? '<button type="button" class="act" data-approve="' + btnIdx + '">' + btnLabel + '</button>' : '')
-    + (x.time ? '<span class="decided-time">' + x.time + '</span>' : '')
-    + '</div>'
-    + (x.rec ? '<div class="rec">' + x.rec + '</div>' : '')
-    + '</div>';
-}
-function waitRowHTML(x, i){
-  return '<div><div class="r"><div class="grow"><div class="ttl">' + x.t + '</div><div class="sub">' + x.s + '</div></div>'
-    + chipHTML(x.chip) + '<span class="money">' + x.m + '</span>'
-    + '<button type="button" class="act ghostbad" data-decline="' + i + '">✕ Decline</button>'
-    + '<button type="button" class="act primary" data-approve="' + i + '">✓ Approve</button>'
-    + '</div><div class="rec">' + x.rec + '</div></div>';
-}
-function jobHTML(j){
-  return '<div class="job"><div class="head"><b>' + j.n + '</b><span class="tog" title="On"></span></div>'
-    + (j.money ? '<span class="chip good" style="align-self:flex-start">On · moves money</span>' : '<span class="chip" style="align-self:flex-start">On</span>')
-    + '<div class="what">' + j.what + '</div>'
-    + '<div class="before"><b>Before:</b> ' + j.before + '</div>'
-    + '<div class="stats"><div><div class="k">Runs, 30 days</div><div class="v">' + j.runs + '</div></div>'
-    + '<div><div class="k">Staff time saved</div><div class="v">' + j.hrs + '</div></div>'
-    + '<div><div class="k">By hand, each</div><div class="v">' + j.each + '</div></div></div></div>';
-}
-function render(){
-  var d = DATA[niche];
-  $('subline').textContent = d.subline;
-  $('nichetab-btn').textContent = d.nicheTab;
-  $('sw-clinic').setAttribute('aria-pressed', String(niche === 'clinic'));
-  $('sw-mech').setAttribute('aria-pressed', String(niche === 'mech'));
-  $('tiles').innerHTML = tilesHTML(d.tiles);
-  $('att-sub').textContent = d.attSub;
-  $('attention').innerHTML = d.attention.map(function(x){ return rowHTML(x, x.act, -1); }).join('');
-  $('calls-sub').textContent = d.callsSub;
-  $('calls').innerHTML = d.calls.map(function(c){
-    return '<details class="callrow"><summary tabindex="0"><div class="r">'
-      + '<span class="meta">' + c.time + '</span>'
-      + '<div class="grow"><div class="ttl">' + c.who + '</div><div class="sub">' + c.what + '</div></div>'
-      + c.chips.map(chipHTML).join('')
-      + '<span class="money">' + c.val + '</span><span class="meta">' + c.dur + '</span>'
-      + '</div></summary><div class="transcript">' + c.tr + '</div></details>';
-  }).join('');
-  $('agent-tiles').innerHTML = tilesHTML(d.agentTiles);
-  $('safety').textContent = d.safety;
-  $('jobs-sub').textContent = d.jobsSub;
-  $('jobs').innerHTML = d.jobs.map(jobHTML).join('');
-  renderQueue();
-  renderDecided();
-  $('niche-tiles').innerHTML = tilesHTML(d.nicheTiles);
-  $('niche-h2').textContent = d.nicheH2;
-  $('niche-sub').textContent = d.nicheSub;
-  $('niche-list').innerHTML = d.nicheList.map(function(x){ return rowHTML(x); }).join('');
-  $('niche-src').textContent = d.nicheSrc;
-}
-function renderQueue(){
-  var d = DATA[niche];
-  $('qcount').textContent = d.waiting.length ? d.waiting.length : '';
-  $('waiting').innerHTML = d.waiting.length
-    ? d.waiting.map(waitRowHTML).join('')
-    : '<div class="empty">Queue clear — nothing is waiting on you.</div>';
-}
-function renderDecided(){
-  var d = DATA[niche];
-  $('decided').innerHTML = d.decided.map(function(x){ return rowHTML(x); }).join('');
-}
-document.getElementById('waiting').addEventListener('click', function(e){
-  var d = DATA[niche];
-  var a = e.target.closest('[data-approve]');
-  var x = e.target.closest('[data-decline]');
-  if (a) {
-    var item = d.waiting.splice(Number(a.getAttribute('data-approve')), 1)[0];
-    d.decided.unshift({ t: item.t.replace(/^Send |^Start |^Retry |^Offer |^Follow up /, function(m){ return ({'Send ':'Sent ','Start ':'Started ','Retry ':'Retried ','Offer ':'Offered ','Follow up ':'Followed up '})[m]; }), s: item.s, time: 'Just now' });
-  } else if (x) {
-    var item2 = d.waiting.splice(Number(x.getAttribute('data-decline')), 1)[0];
-    d.decided.unshift({ t: 'Declined: ' + item2.t.charAt(0).toLowerCase() + item2.t.slice(1), s: 'Nothing was sent or charged. The agent will re-raise it only if the numbers change.', time: 'Just now' });
-  } else { return; }
-  renderQueue(); renderDecided();
-});
-document.getElementById('attention').addEventListener('click', function(e){
-  var b = e.target.closest('button.act');
-  if(!b) return;
-  b.textContent = 'Queued ✓'; b.disabled = true; b.style.opacity = .6;
-});
-document.querySelectorAll('nav.tabs button').forEach(function(b){
-  b.addEventListener('click', function(){
-    tab = b.getAttribute('data-tab');
-    document.querySelectorAll('nav.tabs button').forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); });
-    document.querySelectorAll('[data-panel]').forEach(function(p){ p.hidden = p.getAttribute('data-panel') !== tab; });
+/* curated receptionist call log (last 24h) */
+var CALLS=[
+  {t:"7:02 AM",w:"S. Chen",c:[["info","Message"]],x:"Asked if her glasses were ready — task logged for the desk",v:"—",d:"0:49",tr:"<b>AI:</b> Our optical team confirms orders after 9 — I've left them a note to call you first thing."},
+  {t:"8:12 AM",w:"María G.",c:[["acc","Español"],["good","Booked"]],x:"New patient exam Thu 2:40 — VSP verified, switched to Spanish mid-call",v:"$300",d:"2:51",tr:"<b>Caller:</b> ¿Puedo hacer una cita para un examen? <b>AI:</b> Claro que sí — el jueves a las 2:40. ¿Su seguro? <b>Caller:</b> VSP. <b>AI:</b> Perfecto, confirmada."},
+  {t:"12:34 PM",w:"R. Patel",c:[["warn","Lunch"],["good","Booked"]],x:"Annual exam + CL fitting booked while the desk was at lunch",v:"$485",d:"3:12",tr:"<b>AI:</b> The front desk is with patients, but I can book you now — Tuesday 10:15 for exam plus fitting?"},
+  {t:"12:41 PM",w:"Unknown",c:[["warn","Lunch"],["info","Answered"]],x:"Hours, parking and directions — no human needed",v:"—",d:"0:58",tr:"<b>AI:</b> Open until 6 today. Parking is behind the building off Vance."},
+  {t:"3:05 PM",w:"D. Whitfield",c:[["good","Cancel saved"]],x:"Called to cancel Friday — moved to Friday 9:20 instead",v:"$300 kept",d:"1:47",tr:"<b>Caller:</b> I need to cancel Friday. <b>AI:</b> Before I do — Friday 9:20 just opened. Would that work? <b>Caller:</b> …Actually yes."},
+  {t:"6:48 PM",w:"K. Alvarez",c:[["acc","After hours"],["good","Booked"]],x:"Kids' exam Saturday 11:00 — booked after close",v:"$240",d:"2:05",tr:"<b>AI:</b> Saturday 11:00 or 11:40 for a children's exam? <b>Caller:</b> 11. <b>AI:</b> Booked — confirmation text on the way."},
+  {t:"9:17 PM",w:"J. Moore",c:[["acc","After hours"],["bad","Urgent → routed"]],x:"Flashes and floaters — urgent protocol, routed to on-call",v:"—",d:"1:21",tr:"<b>AI:</b> Sudden flashes and new floaters need same-day attention. Connecting you to the doctor's on-call line now."},
+  {t:"10:52 PM",w:"T. Okafor",c:[["acc","After hours"],["good","Booked"]],x:"Rebooked from the recall text — Tuesday 9:00",v:"$436/yr",d:"1:12",tr:"<b>AI:</b> Welcome back — Tuesday 9:00 with Dr. Liao. Your VSP is still on file."}
+];
+
+/* agent: 9 jobs */
+var JOBS=[
+  {n:"After-hours & lunch answering",m:0,w:"Answers 12–1 and 5 PM–8 AM, books exams into open slots, routes urgent symptoms to on-call.",b:"Overnight voicemails waited for the desk; most callers had already booked elsewhere.",r:"97",h:"8.1 hr",e:"5 min"},
+  {n:"Cancel-save offers",m:0,w:"When someone calls to cancel, offers the next opening before releasing the slot.",b:"The desk took the cancellation and the chair sat empty.",r:"11",h:"1.1 hr",e:"6 min"},
+  {n:"Recall outreach",m:0,w:"Works the overdue-exam list by text and call until patients rebook or opt out.",b:"Recall reports were printed monthly and worked when the desk had time — usually never.",r:"48",h:"6.4 hr",e:"8 min"},
+  {n:"Payday retries",m:1,w:"Retries declined dues on the patient's usual payment day, up to 21 days.",b:"Billing re-ran declined drafts by hand the next morning.",r:"29",h:"2.9 hr",e:"6 min"},
+  {n:"Card-update links",m:1,w:"When a card is expired or dead, texts a secure link to update it instead of retrying.",b:"The desk called each patient and typed the new number over the phone.",r:"17",h:"1.7 hr",e:"6 min"},
+  {n:"Waitlist backfill",m:0,w:"When a cancellation sticks, offers the slot to matching waitlist patients, first-come.",b:"The desk called down the waitlist between check-ins — when there was time.",r:"9",h:"1.5 hr",e:"10 min"},
+  {n:"Reorder reminders",m:0,w:"Texts contact-lens wearers a reorder link when their supply window lapses.",b:"Reorders happened only when the patient remembered.",r:"12",h:"1.0 hr",e:"5 min"},
+  {n:"Clean campaign lists",m:0,w:"Removes deceased, opted-out and cancelled patients from every campaign before it sends.",b:"Lists were exported, cleaned by hand and re-imported before each send.",r:"8",h:"1.2 hr",e:"9 min"},
+  {n:"Insurance verification prep",m:0,w:"Pre-verifies tomorrow's schedule against VSP/EyeMed eligibility overnight and flags mismatches.",b:"The desk verified each patient at check-in while the lobby queued.",r:"132",h:"8.8 hr",e:"4 min"}
+];
+var WAITING=[
+  {t:"Send recall texts to 14 overdue patients",s:"“Hi [name], it's been over a year since your last eye exam at Summit. Tap to pick a time.”",c:["warn","Recalls"],m:"$6,104/yr",rec:"<b>Agent recommends: Approve.</b> All 14 have texting consent and open slots match their usual days."},
+  {t:"Retry 3 failed payments and notify patients",s:"R. Soto, M. Price, K. Lam — cards declined overnight",c:["bad","Billing"],m:"$412",rec:"<b>Agent recommends: Approve.</b> All three decline codes were insufficient funds; retries are timed to each patient's usual payment day."},
+  {t:"Offer tomorrow's 2 open slots to the waitlist",s:"6 waitlisted patients match the open exam types",c:["warn","Schedule"],m:"$600",rec:"<b>Agent recommends: Approve.</b> First-come offer, auto-closes when a slot fills."}
+];
+var DECIDED=[
+  {t:"Confirmed 31 appointments by text",s:"Reminder chain for next week",time:"Today 6:00 AM"},
+  {t:"Handed E. Barros's $64.98 balance to the written-off list",s:"After the 21-day retry window",time:"Nov 13, 1:43 PM"},
+  {t:"Refunded $49.99 to E. Lynch",s:"Duplicate draft after a plan change",time:"Nov 12, 7:13 PM"},
+  {t:"Drafted PO-2231 to Alamo Optical Supply — $258.00",s:"CL solution and cleaning kits under reorder point",time:"Nov 12, 5:52 PM"},
+  {t:"AI receptionist booked T. Okafor from the recall list",s:"Tuesday 9:00 · Dr. Liao",time:"Nov 12, 10:52 PM"}
+];
+
+/* leads */
+var LSTAGES=[["new","New","#8a8f98"],["contacted","Contacted","var(--c2)"],["booked","Exam booked","var(--c1)"],["showed","Showed","var(--c4)"],["joined","Became patient","var(--c3)"]];
+var LEADS=(function(){
+  var out=[], n=[["new",9],["contacted",13],["booked",6],["showed",8],["joined",9]];
+  n.forEach(function(st){
+    for(var i=0;i<st[1];i++){
+      var fn=pick(FIRST), ln=pick(LAST);
+      out.push({id:"L"+out.length, name:fn+" "+ln, stage:st[0],
+        src: wpick([["Website",26],["AI receptionist",22],["Walk-in",14],["Google",14],["Instagram",12],["Referral",12]]),
+        ah: rnd()<0.42, days: ri(0,13), owner: pick(["Grace Amaral","Steven Santiago","Dana R."]),
+        val: pick([12.99,24.99,24.99,39.99,59.99]),
+        next: pick(["Call back: first reply not sent yet","Check in after the first visit","Follow up on joining","Book the exam","Send welcome kit"])});
+    }
   });
-});
-$('sw-clinic').addEventListener('click', function(){ niche = 'clinic'; render(); drawChips(); });
-$('sw-mech').addEventListener('click', function(){ niche = 'mech'; render(); drawChips(); });
+  return out;
+})();
 
-/* ---------- live call simulation ---------- */
-var SIM = {
-  clinic: {
-    who: "New caller · (210) 555-0164",
-    lines: [
-      ["AI","Thank you for calling Summit Eye Care — how can I help?"],
-      ["Caller","I'd like to schedule an eye exam. I'm a new patient."],
-      ["AI","Happy to help. We have Thursday 2:40 or Friday 10:15 — which works better?"],
-      ["Caller","Friday at 10:15."],
-      ["AI","And which insurance will you be using?"],
-      ["Caller","VSP."],
-      ["AI","Perfect — you're booked for Friday at 10:15. You'll get a confirmation text in a moment."]
-    ],
-    row: {time:"Just now", who:"New patient — (210) 555-0164", chips:[["good","Booked"]], what:"New patient exam Friday 10:15 — VSP verified", val:"$300", dur:"1:12"},
-    bump:[0,2]
-  },
-  mech: {
-    who: "After-hours · (210) 555-0198",
-    lines: [
-      ["AI","Kestrel Mechanical after-hours line — what's going on?"],
-      ["Caller","Night manager at the cold storage on Fairview. Compressor keeps tripping and temps are climbing."],
-      ["AI","That qualifies for emergency dispatch. I have your site on file — dock 2 entrance, ask for the manager?"],
-      ["Caller","That's right."],
-      ["AI","Marcus is on call tonight, about 35 minutes out. You'll get his number by text right now."]
-    ],
-    row: {time:"Just now", who:"Cold storage — Fairview", chips:[["acc","After hours"],["bad","Emergency → dispatched"]], what:"Compressor failure — on-call tech dispatched, ETA 35 min", val:"Emergency rate", dur:"1:38"},
-    bump:[0,1]
-  }
+/* campaigns */
+var CAMPAIGNS=[
+  {n:"November birthdays",s:"Status is Active · Birthday this month",st:["info","Scheduled"],ch:"SMS",sent:"Goes out Nov 18, 10:00 AM",a:96,d:"–",cl:"–",res:"–"},
+  {n:"New Vision+ upgrade offer",s:"Plan is Exam Plan · 2+ visits in 90 days",st:["warn","Draft"],ch:"Email",sent:"Edited Nov 13, 2:20 PM",a:"–",d:"–",cl:"–",res:"–"},
+  {n:"Card update reminder",s:"Status is Past due · balance $1+",st:["good","Sent"],ch:"SMS",sent:"Nov 10, 10:00 AM",a:61,d:58,cl:7,res:"$684 recovered"},
+  {n:"Summer's over, your eyes miss you",s:"No visit in 14+ months",st:["good","Sent"],ch:"Email + SMS",sent:"Nov 3, 9:00 AM",a:388,d:371,cl:34,res:"41 rebooked"},
+  {n:"CL reorder window",s:"Contact-lens wearers · supply lapsed",st:["good","Sent"],ch:"SMS",sent:"Oct 26, 11:00 AM",a:74,d:71,cl:19,res:"$1,308/yr reorders"},
+  {n:"Come back for $0 exam-copay",s:"Cancelled · reason was Cost",st:["good","Sent"],ch:"Email + SMS",sent:"Oct 15, 10:00 AM",a:47,d:44,cl:5,res:"3 rejoined"},
+  {n:"Kids Saturday clinic",s:"Family Plan · child on file",st:["good","Sent"],ch:"Email",sent:"Oct 4, 12:00 PM",a:118,d:112,cl:21,res:"17 booked"},
+  {n:"Welcome back from your pause",s:"Paused · pause ends this month",st:["good","Sent"],ch:"Email",sent:"Sep 20, 9:00 AM",a:28,d:27,cl:4,res:"5 resumed"}
+];
+
+/* optical products */
+var PRODUCTS=[["Daily CL — 90 box",64.99,41],["Monthly CL — 6 box",48.99,63],["CL solution 12 oz",12.49,118],["Blue-light lenses add-on",49.00,999],["Acuvue trial kit",0,52],["Frames — Hartley",139.00,24],["Frames — Mesa",119.00,31],["Lens cleaning kit",9.99,140],["Readers +1.50",24.99,45],["Polarized clip-ons",34.99,28]];
+
+/* staff */
+var STAFF=(function(){ var roles=[["Optometrist",4],["Optician",5],["Front desk",6],["Tech",4],["Billing",2]]; var out=[];
+  roles.forEach(function(r){ for(var i=0;i<r[1];i++){ out.push({name:pick(FIRST)+" "+pick(LAST), role:r[0], loc:pick(LOCS), hrs:ri(24,40)}); } }); return out; })();
+
+/* ============ chart helpers ============ */
+var tip=$('#tip');
+function showTip(e,html){ tip.innerHTML=html; tip.hidden=false; var x=e.clientX+12,y=e.clientY-10;
+  var r=tip.getBoundingClientRect(); if(x+r.width>window.innerWidth-8)x=e.clientX-r.width-12; tip.style.left=x+"px"; tip.style.top=y+"px"; }
+function hideTip(){ tip.hidden=true; }
+document.addEventListener('scroll',hideTip,true);
+
+function barSVG(opts){
+  var vals=opts.values, labels=opts.labels, W=600, H=170, padL=8, padB=18, padT=14;
+  var max=Math.max.apply(null,vals)*1.08||1, bw=(W-padL*2)/vals.length;
+  var g='';
+  [0.5,1].forEach(function(f){ var y=padT+(H-padB-padT)*(1-f); g+='<line x1="'+padL+'" x2="'+(W-padL)+'" y1="'+y+'" y2="'+y+'" stroke="var(--line)" stroke-width="1"/>'; });
+  var bars=vals.map(function(v,i){
+    var h=Math.max(2,(H-padB-padT)*v/max), x=padL+i*bw+bw*0.14, y=H-padB-h;
+    return '<rect x="'+x+'" y="'+y+'" width="'+(bw*0.72)+'" height="'+h+'" rx="3" fill="'+(opts.color||'var(--c2)')+'" data-tip="'+esc(labels[i]+': '+(opts.fmt?opts.fmt(v):v))+'"/>';
+  }).join('');
+  var xl=labels.map(function(l,i){ if(vals.length>8 && i%2) return ''; var x=padL+i*bw+bw*0.5;
+    return '<text x="'+x+'" y="'+(H-4)+'" text-anchor="middle" font-size="9.5" fill="var(--mut)">'+esc(l)+'</text>'; }).join('');
+  var mi=vals.indexOf(Math.max.apply(null,vals));
+  var ml='<text x="'+(padL+mi*bw+bw*0.5)+'" y="'+(H-padB-(H-padB-padT)*vals[mi]/max-5)+'" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--mut)">'+esc(opts.fmt?opts.fmt(vals[mi]):vals[mi])+'</text>';
+  return '<div class="chart"><svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+esc(opts.title||'')+'">'+g+bars+ml+xl+'</svg></div>';
+}
+function stackSVG(opts){ /* series:[{name,color,values}] */
+  var W=600,H=190,padL=8,padB=18,padT=10,n=opts.labels.length;
+  var totals=opts.labels.map(function(_,i){ return opts.series.reduce(function(s,se){return s+se.values[i];},0); });
+  var max=Math.max.apply(null,totals)*1.08||1, bw=(W-padL*2)/n, g='';
+  [0.5,1].forEach(function(f){ var y=padT+(H-padB-padT)*(1-f); g+='<line x1="'+padL+'" x2="'+(W-padL)+'" y1="'+y+'" y2="'+y+'" stroke="var(--line)"/>'; });
+  var bars='';
+  for(var i=0;i<n;i++){ var y=H-padB;
+    for(var s=0;s<opts.series.length;s++){ var se=opts.series[s], v=se.values[i]; if(!v) continue;
+      var h=(H-padB-padT)*v/max; y-=h;
+      bars+='<rect x="'+(padL+i*bw+bw*0.16)+'" y="'+(y+1)+'" width="'+(bw*0.68)+'" height="'+Math.max(1,h-2)+'" rx="2" fill="'+se.color+'" data-tip="'+esc(opts.labels[i]+' · '+se.name+': '+v)+'"/>';
+    } }
+  var xl=opts.labels.map(function(l,i){ if(n>8&&i%2)return ''; return '<text x="'+(padL+i*bw+bw*0.5)+'" y="'+(H-4)+'" text-anchor="middle" font-size="9.5" fill="var(--mut)">'+esc(l)+'</text>'; }).join('');
+  var legend='<div class="legend">'+opts.series.map(function(se){ return '<span><i style="background:'+se.color+'"></i>'+esc(se.name)+'</span>'; }).join('')+'</div>';
+  return '<div class="chart"><svg viewBox="0 0 '+W+' '+H+'">'+g+bars+xl+'</svg>'+legend+'</div>';
+}
+function lineSVG(opts){
+  var vals=opts.values,labels=opts.labels,W=600,H=170,padL=8,padB=18,padT=12;
+  var min=Math.min.apply(null,vals), max=Math.max.apply(null,vals); var span=(max-min)||1; min-=span*0.15; max+=span*0.1;
+  function X(i){return padL+ (W-2*padL)*i/(vals.length-1);} function Y(v){return padT+(H-padB-padT)*(1-(v-min)/(max-min));}
+  var d=vals.map(function(v,i){return (i?'L':'M')+X(i).toFixed(1)+' '+Y(v).toFixed(1);}).join(' ');
+  var area=d+' L'+X(vals.length-1)+' '+(H-padB)+' L'+X(0)+' '+(H-padB)+' Z';
+  var g=''; [0.5,1].forEach(function(f){var y=padT+(H-padB-padT)*(1-f); g+='<line x1="'+padL+'" x2="'+(W-padL)+'" y1="'+y+'" y2="'+y+'" stroke="var(--line)"/>';});
+  var dots=vals.map(function(v,i){ return '<circle cx="'+X(i)+'" cy="'+Y(v)+'" r="7" fill="transparent" data-tip="'+esc(labels[i]+': '+(opts.fmt?opts.fmt(v):v))+'"/>'; }).join('');
+  var endLab='<text x="'+(X(vals.length-1)-4)+'" y="'+(Y(vals[vals.length-1])-8)+'" text-anchor="end" font-size="10" font-weight="600" fill="var(--mut)">'+esc(opts.fmt?opts.fmt(vals[vals.length-1]):vals[vals.length-1])+'</text>';
+  var xl=labels.map(function(l,i){ if(labels.length>8&&i%2)return ''; return '<text x="'+X(i)+'" y="'+(H-4)+'" text-anchor="middle" font-size="9.5" fill="var(--mut)">'+esc(l)+'</text>'; }).join('');
+  return '<div class="chart"><svg viewBox="0 0 '+W+' '+H+'"><path d="'+area+'" fill="'+(opts.color||'var(--c2)')+'" opacity="0.14"/><path d="'+d+'" fill="none" stroke="'+(opts.color||'var(--c2)')+'" stroke-width="2"/>'+g+dots+endLab+xl+'</svg></div>';
+}
+document.addEventListener('mousemove',function(e){
+  var t=e.target.closest && e.target.closest('[data-tip]');
+  if(t) showTip(e,esc(t.getAttribute('data-tip'))); else hideTip();
+});
+
+/* ============ shell / router ============ */
+var NAV=[["Operations",[["overview","Overview"],["patients","Patients"],["billing","Billing"],["frontdesk","Front desk"],["optical","Optical sales"],["staff","Staff & payroll"]]],
+         ["Growth",[["leads","Leads"],["receptionist","AI receptionist"],["campaigns","Campaigns"],["reports","Reports"]]],
+         ["Automation",[["agent","Back-office agent"]]]];
+function drawNav(route){
+  $('#nav').innerHTML=NAV.map(function(g){ return '<div class="grp">'+g[0]+'</div>'+g[1].map(function(it){
+    return '<a href="#'+it[0]+'" class="'+(route===it[0]||route.indexOf(it[0])===0&&it[0]==='patients'&&route.indexOf('patient-')===0?'on':'')+'">'+it[1]+'</a>'; }).join(''); }).join('');
+  if(route.indexOf('patient-')===0){ $$('#nav a').forEach(function(a){ a.classList.toggle('on', a.getAttribute('href')==='#patients'); }); }
+  if(route==='newcampaign'){ $$('#nav a').forEach(function(a){ a.classList.toggle('on', a.getAttribute('href')==='#campaigns'); }); }
+}
+var VIEWS={};
+function route(){
+  var h=(location.hash||'#overview').slice(1);
+  var view = h.indexOf('patient-')===0 ? 'profile' : (VIEWS[h]?h:'overview');
+  drawNav(h);
+  VIEWS[view](h);
+  window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',route);
+
+/* footer helper */
+function foot(){ return '<footer>Summit Eye Care OS — demo by Six Harmony. Every figure on this page is worked out from the sample patient book and billing, so it matches what each screen shows. Sample data only.</footer>'; }
+function tilesHTML(arr){ return '<div class="tiles">'+arr.map(function(t){
+  return '<div class="tile"><div class="k">'+t[0]+'</div><div class="v">'+t[1]+'</div>'+(t[2]?'<div class="s '+(t[3]||'')+'">'+t[2]+'</div>':'')+'</div>'; }).join('')+'</div>'; }
+
+/* ============ views ============ */
+VIEWS.overview=function(){
+  var a=agg();
+  var att=[
+    ["urgent","Billing","519 accounts in the retry window","$33,037 still open — payday retries running; "+money(S.recovered[11])+" recovered this month","#billing"],
+    ["urgent","Front desk","R. Soto's card declined at check-in at 8:14 AM","Balance hold — desk collected $15 copay, retry queued for her payday","#patients"],
+    ["urgent","Leads","4 new leads waiting over an hour for a first reply","Emma Ferraro, Colleen Kennedy + 2 more","#leads"],
+    ["warn","Recalls","14 patients overdue for annual exams","All with vision plans on file — recall text drafted","#agent"],
+    ["warn","Schedule","Tomorrow has two empty chairs — 9:20 and 2:40","Cancellations from D. Whitfield and A. Boone · waitlist has 6 matches","#frontdesk"],
+    ["warn","Staff","2 payroll exceptions to resolve","Missed punches at Medical Center","#staff"],
+    ["info","Optical","3 items under reorder point","PO drafted to Alamo Optical Supply — $258","#optical"]
+  ];
+  $('#main').innerHTML =
+    '<h2>Overview</h2><p class="panel-sub">Sun, Nov 15 · '+(LOC==='all'?'All locations':LOC)+'</p>'
+    + tilesHTML([
+      ["Active patients", a.active.toLocaleString(), "+"+(S.members[11]-S.members[10])+" net, last 30 days · "+a.paused+" paused","good"],
+      ["Monthly plan dues", money(a.dues), "on active and past-due agreements"],
+      ["Dues collected this month", money(a.collected), money(S.recovered[11])+" recovered by retries","good"],
+      ["Past due", money(a.pdSum), a.pdCount+" accounts · "+pct(100*a.pdCount/a.active,1)+" of paying patients","bad"],
+      ["Check-ins today", a.checkToday.toLocaleString(), "walk-ins + appointments"]
+    ])
+    + '<div class="cols2"><section class="block"><h3>Needs attention</h3><p class="panel-sub">'+att.length+' items to look at, 3 urgent.</p><div class="rowlist">'
+    + att.map(function(x){ return '<a href="'+x[4]+'" style="color:inherit;text-decoration:none"><div class="r"><span class="chip '+(x[0]==='urgent'?'bad':x[0])+'">'+(x[0]==='urgent'?'Urgent':x[1])+'</span><div class="grow"><div class="ttl">'+esc(x[2])+'</div><div class="sub">'+esc(x[3])+'</div></div><span class="meta">'+x[1]+' ›</span></div></a>'; }).join('')
+    + '</div></section>'
+    + '<section class="block"><div class="between"><h3>Back-office agent this week</h3><a href="#agent" class="act" style="text-decoration:none">Open</a></div><p class="panel-sub">Work nobody on staff had to do.</p>'
+    + '<div class="tiles" style="grid-template-columns:repeat(3,1fr)">'
+    + [["Tasks done","363"],["Hours saved","32.7"],["Dues recovered",money(S.recovered[11])]].map(function(t){return '<div class="tile"><div class="k">'+t[0]+'</div><div class="v" style="font-size:20px">'+t[1]+'</div></div>';}).join('')
+    + '</div><div class="rowlist">'+DECIDED.slice(0,4).map(function(x){return '<div class="r"><div class="grow"><div class="ttl">'+esc(x.t)+'</div><div class="sub">'+esc(x.s)+'</div></div><span class="decided-time">'+esc(x.time)+'</span></div>';}).join('')+'</div></section></div>'
+    + '<div class="cols2" style="grid-template-columns:1fr 1fr"><section class="block"><h3>Patients, last 12 months</h3><p class="panel-sub">Active, paused and past-due agreements at each month end. +'+(S.members[11]-S.members[0]).toLocaleString()+' over the year.</p>'
+    + lineSVG({values:S.members,labels:MONTHS,color:'var(--c2)',fmt:function(v){return v.toLocaleString();}})
+    + '</section><section class="block"><h3>Dues collected by month</h3><p class="panel-sub">Drafts that cleared plus declines recovered by retries. This month is to date.</p>'
+    + barSVG({values:S.collected,labels:MONTHS,color:'var(--c3)',fmt:function(v){return money(v);}})
+    + '</section></div>'
+    + '<section class="block"><h3>Locations</h3><p class="panel-sub">Select a location in the top bar to see the OS for that location only.</p><div class="tscroll"><table class="tbl"><tr><th>Location</th><th class="num">Active patients</th><th class="num">Net, 30 days</th><th class="num">Monthly dues</th><th class="num">Collected this month</th><th class="num">Past due</th><th class="num">Visits / patient, 30d</th></tr>'
+    + LOCS.map(function(l){ var ps=P.filter(function(p){return p.loc===l&&p.status!=="cancelled";}); var d=ps.reduce(function(s,p){return s+p.dues;},0);
+        var pd=ps.filter(function(p){return p.status==="past_due";}).length;
+        return '<tr><td><b>'+l+'</b></td><td class="num">'+ps.length.toLocaleString()+'</td><td class="num" style="color:var(--good)">+'+ri(4,16)+'</td><td class="num">'+money(d)+'</td><td class="num">'+money(d*0.52)+'</td><td class="num">'+pct(100*pd/ps.length,1)+'</td><td class="num">'+(1.1+rnd()*0.6).toFixed(1)+'</td></tr>'; }).join('')
+    + '</table></div></section>' + foot();
 };
-var simRunning = false;
-var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-document.getElementById('simcall').addEventListener('click', function(){
-  if (simRunning) return;
-  simRunning = true;
-  var s = SIM[niche], box = $('livecall');
-  box.innerHTML = '<div class="ringing"><div class="r"><span><span class="pulse"></span><b>Incoming call</b></span><span class="meta">' + s.who + '</span></div><div id="simlines"></div></div>';
-  var i = 0, lines = $('simlines');
-  function next(){
-    if (i < s.lines.length) {
-      var l = s.lines[i++];
-      lines.innerHTML += '<div class="tline"><b>' + l[0] + ':</b> ' + l[1] + '</div>';
-      lines.lastElementChild.scrollIntoView({block:'nearest'});
-      setTimeout(next, reduced ? 60 : 1050);
-    } else {
-      var d = DATA[niche];
-      var full = s.lines.map(function(l){ return '<b>' + l[0] + ':</b> ' + l[1]; }).join(' ');
-      d.calls.unshift(Object.assign({tr: full}, s.row));
-      s.bump.forEach(function(ti){ var t = d.tiles[ti]; var n = parseInt(t.v, 10); if (!isNaN(n)) t.v = String(n + 1); });
-      box.innerHTML = '';
-      render();
-      simRunning = false;
-    }
-  }
-  setTimeout(next, reduced ? 60 : 900);
-});
 
-/* ---------- scripted assistant ---------- */
-var panel = $('ai-panel'), backdrop = $('ai-backdrop'), log = $('ai-log'), chipsBox = $('ai-chips');
-function aiOpen(){ panel.hidden = false; backdrop.hidden = false; if (!log.childElementCount) aiSay(greet()); drawChips(); }
-function aiShut(){ panel.hidden = true; backdrop.hidden = true; }
-$('ai-open').addEventListener('click', aiOpen);
-$('ai-close').addEventListener('click', aiShut);
-backdrop.addEventListener('click', aiShut);
-function greet(){
-  return "I run this console. Ask me to move an appointment, chase an invoice, or read the numbers — or tap a suggestion below. (Demo: I handle a scripted set of requests.)";
-}
-function CHIPS(){
-  return niche === 'clinic'
-    ? ["What booked this week?", "Move D. Whitfield to Monday 9:00", "Draft the recall text", "Who's slipping away?"]
-    : ["What booked this week?", "Chase invoice #2231", "Follow up the Harlan bid", "What's in the bid pipeline?"];
-}
-function drawChips(){
-  chipsBox.innerHTML = CHIPS().map(function(c){ return '<button type="button">' + c + '</button>'; }).join('');
-}
-chipsBox.addEventListener('click', function(e){
-  var b = e.target.closest('button'); if (!b) return; ask(b.textContent);
-});
-function bubble(html, user){
-  var el = document.createElement('div');
-  el.className = 'bub' + (user ? ' user' : '');
-  el.innerHTML = html;
-  log.appendChild(el);
-  log.scrollTop = log.scrollHeight;
-  return el;
-}
-function aiSay(html){ return bubble(html, false); }
-function stepsThen(steps, thenHTML, confirmLabel, onConfirm){
-  var el = aiSay('<div class="steps"></div>');
-  var sv = el.firstElementChild, i = 0;
-  function tick(){
-    if (i < steps.length) {
-      sv.innerHTML += '<span>' + steps[i++] + '</span>';
-      log.scrollTop = log.scrollHeight;
-      setTimeout(tick, reduced ? 40 : 480);
-    } else {
-      el.innerHTML += thenHTML + (confirmLabel ? '<div class="confirm"><button type="button" class="act primary">' + confirmLabel + '</button></div>' : '');
-      log.scrollTop = log.scrollHeight;
-      if (confirmLabel) el.querySelector('.confirm button').addEventListener('click', function(ev){
-        ev.target.disabled = true; ev.target.textContent = 'Approved ✓'; ev.target.style.opacity = .6;
-        onConfirm();
-      });
-    }
-  }
-  tick();
-}
-function ask(text){
-  bubble(text, true);
-  var q = text.toLowerCase(), d = DATA[niche];
-  if (q.indexOf('booked') > -1 && q.indexOf('week') > -1) {
-    aiSay(niche === 'clinic'
-      ? "This week: <b>23 appointments booked</b> by the receptionist — 4 of them saved cancellations, 17 caught after hours or at lunch. Booked value is about <b>$9,840</b> this month. The log tab has every call with its recording."
-      : "This week: <b>19 jobs booked</b> and <b>4 bid requests captured</b> worth about <b>$41K</b>. 16 of the 38 calls came in after hours — including two emergency dispatches that billed at emergency rate.");
-  } else if (niche === 'clinic' && (q.indexOf('whitfield') > -1 || q.indexOf('move') === 0 || q.indexOf('reschedule') > -1)) {
-    stepsThen(
-      ["Found D. Whitfield — Friday 9:20, annual exam", "Monday 9:00 is open with Dr. Liao", "Confirmation text drafted"],
-      "Move D. Whitfield from <b>Friday 9:20</b> to <b>Monday 9:00</b> and send the confirmation text?",
-      "Approve the move",
-      function(){
-        d.decided.unshift({t:"Moved D. Whitfield to Monday 9:00", s:"Confirmation text sent · Friday 9:20 released to the waitlist", time:"Just now"});
-        renderDecided();
-        aiSay("Done — moved to <b>Monday 9:00</b>, confirmation sent, and the Friday slot was offered to the waitlist. It's in the Decided log.");
-      });
-  } else if (niche === 'clinic' && q.indexOf('recall') > -1) {
-    stepsThen(
-      ["14 patients overdue 14+ months", "All have mobile numbers with text consent", "Draft ready"],
-      "<i>“Hi [name], it's been over a year since your last eye exam at Summit Eye Care. We have openings this week — tap to pick a time.”</i>",
-      "Queue to 14 patients",
-      function(){
-        var idx = d.waiting.findIndex(function(w){ return w.t.indexOf('recall') > -1; });
-        if (idx > -1) d.waiting.splice(idx, 1);
-        d.decided.unshift({t:"Sent recall texts to 14 overdue patients", s:"Replies will book straight into open slots", time:"Just now"});
-        renderQueue(); renderDecided();
-        aiSay("Queued. Replies book straight into open slots — you'll see rebooks appear on the Recalls tab.");
-      });
-  } else if (niche === 'clinic' && (q.indexOf('slipping') > -1 || q.indexOf('risk') > -1 || q.indexOf('overdue') > -1)) {
-    aiSay("<b>38 patients</b> haven't been in for 14+ months — about <b>$16,568/yr</b> if they lapse. 11 are already rebooked from the first recall pass, 19 haven't replied yet, and 6 are on their final touch. The full list is on the Recalls tab.");
-  } else if (niche === 'mech' && (q.indexOf('2231') > -1 || q.indexOf('chase') > -1 || q.indexOf('invoice') > -1)) {
-    stepsThen(
-      ["Invoice #2231 — Westline Plaza, $6,140, 63 days", "Two reminders sent, no payment", "Step 3 is a call + final statement"],
-      "Place the step-3 collection call to Westline's AP desk and send the final statement?",
-      "Approve step 3",
-      function(){
-        var row = d.nicheList.find(function(x){ return x.t.indexOf('#2231') > -1; });
-        if (row) row.chip = ["good","Call placed — payment promised Fri"];
-        d.decided.unshift({t:"Chased invoice #2231 — $6,140", s:"AP desk reached · payment promised Friday", time:"Just now"});
-        $('niche-list').innerHTML = d.nicheList.map(function(x){ return rowHTML(x); }).join('');
-        renderDecided();
-        aiSay("Call placed and statement sent — Westline's AP promised payment <b>Friday</b>. I'll flag it if nothing lands by then. Updated on the Bids & invoices tab.");
-      });
-  } else if (niche === 'mech' && (q.indexOf('harlan') > -1 || q.indexOf('follow') > -1)) {
-    stepsThen(
-      ["Bid sent Nov 4 — $18,000 RTU replacement", "Award decision end of month", "Follow-up drafted to the estimator"],
-      "<i>“Checking you have everything you need on our RTU number — happy to walk the scope with your team this week.”</i>",
-      "Send the follow-up",
-      function(){
-        d.decided.unshift({t:"Followed up the Harlan Builds bid — $18,000", s:"Estimator replied requesting the walk Thursday", time:"Just now"});
-        renderDecided();
-        aiSay("Sent. When they reply, it lands in the log and I'll draft the next step for your approval.");
-      });
-  } else if (niche === 'mech' && q.indexOf('pipeline') > -1) {
-    aiSay("Open pipeline is <b>$41K across 4 bids</b>: RTU replacement $18K (award end of month), boiler retube $12K (aging — follow-up waiting on you), AHU coils ~$12K (site walk Friday 7 AM). Average days-to-paid is down from 58 to <b>47</b> since the chase sequences started.");
+VIEWS.patients=function(){
+  var a=A(), f=VIEWS.patients._f||"current";
+  var sets={current:a, active:a.filter(function(p){return p.status==="active";}), paused:a.filter(function(p){return p.status==="paused";}),
+    past_due:a.filter(function(p){return p.status==="past_due";}), cancelled:P.filter(function(p){return p.status==="cancelled"&&inLoc(p);})};
+  var rows=(sets[f]||a).slice(0,60);
+  $('#main').innerHTML = '<div class="between"><div><h2>Patients</h2><p class="panel-sub">'+a.length.toLocaleString()+' current patients · '+(LOC==='all'?'all locations':LOC)+'</p></div><button class="act primary" onclick="toast(\'Demo — new patients come in through the receptionist and leads board\')">+ New patient</button></div>'
+    + '<div class="seg">'+[["current","Current",sets.current.length],["active","Active",sets.active.length],["paused","Paused",sets.paused.length],["past_due","Past due",sets.past_due.length],["cancelled","Cancelled",sets.cancelled.length]].map(function(s){
+        return '<button type="button" data-f="'+s[0]+'" aria-pressed="'+(f===s[0])+'">'+s[1]+' <span style="opacity:.6">'+s[2]+'</span></button>'; }).join('')+'</div>'
+    + '<section class="block"><div class="tscroll"><table class="tbl"><tr><th>Patient</th><th>Agreement</th><th>Plan</th><th>Status</th><th class="num">Dues/mo</th><th>Last visit</th><th class="num">Visits (30d)</th></tr>'
+    + rows.map(function(p){ var stc=p.status==="active"?"good":p.status==="past_due"?"bad":p.status==="paused"?"info":"";
+        return '<tr class="click" data-id="'+p.id+'"><td><b>'+esc(p.name)+'</b><div class="sub" style="color:var(--mut);font-size:11px">'+esc(p.email)+'</div></td><td>'+p.agree+'</td><td>'+p.plan+'</td><td><span class="chip '+stc+'">'+p.status.replace("_"," ")+'</span></td><td class="num">'+money(p.dues,2)+'</td><td>'+(p.lastV===0?"Today":p.lastV+"d ago")+'</td><td class="num">'+p.v30+'</td></tr>'; }).join('')
+    + '</table></div><p class="srcline">Showing '+rows.length+' of '+(sets[f]||a).length.toLocaleString()+' — search in the top bar jumps straight to a patient.</p></section>' + foot();
+  $$('.seg button').forEach(function(b){ b.addEventListener('click',function(){ VIEWS.patients._f=b.getAttribute('data-f'); VIEWS.patients(); }); });
+  $$('tr.click').forEach(function(tr){ tr.addEventListener('click',function(){ location.hash='patient-'+tr.getAttribute('data-id'); }); });
+};
+
+VIEWS.profile=function(h){
+  var id=h.replace('patient-',''), p=P.find(function(x){return x.id===id;});
+  if(!p){ location.hash='patients'; return; }
+  var visits=[]; var vd=4+ri(0,3);
+  for(var i=0;i<Math.max(p.v30+ri(2,6),4);i++){ visits.push({d:vd, type:pick(["Annual exam","CL check","Frame pickup","Adjustment","Field test"]), loc:p.loc}); vd+=ri(4,11); }
+  $('#main').innerHTML = '<div class="crumb"><a href="#patients">Patients</a> › '+esc(p.name)+'</div>'
+    + (p.status==="past_due" ? '<div class="banner"><div class="r"><div class="grow"><b>'+esc(p.name)+'</b> <span class="chip bad">Past due</span><div class="sub">Owes a declined draft. Billing retries it on her usual payment day — Fri, Nov 20 at 6:00 AM.</div></div><b class="amt">'+money(p.pastDue,2)+'</b><button class="act" onclick="toast(\'Demo — retry queued\')">⟳ Retry now</button><button class="act" onclick="toast(\'Demo — secure update link sent by text\')">Send link</button><button class="act primary" onclick="toast(\'Demo — card reader ready\')">Take payment</button></div></div>' : '')
+    + '<div class="cols2"><div>'
+    + '<section class="block"><div class="between"><h3>Billing</h3><button class="act" onclick="toast(\'Demo\')">Actions …</button></div><p class="panel-sub">Agreement '+p.agree+' at '+p.loc+'</p><div class="facts">'
+    + [["Plan",p.plan],["Monthly dues",money(p.dues,2)],["Billing day","The 1st of each month"],["Next draft","Dec 1, 2026 · "+money(p.dues,2)],["Annual fee","$49.99 each September"],["Payment method",p.card+" · exp 0"+ri(1,9)+"/2"+ri(7,9)]].map(function(x){return '<div><span class="k">'+x[0]+'</span><span class="v">'+x[1]+'</span></div>';}).join('')
+    + '</div></section>'
+    + '<section class="block"><h3>Ledger</h3><p class="panel-sub">Drafts, fees, prorations and refunds, newest first.</p><div class="tscroll"><table class="tbl"><tr><th>Date</th><th>Description</th><th>Method</th><th>Status</th><th class="num">Amount</th></tr>'
+    + p.led.map(function(l){ var m=new Date(NOW); m.setMonth(m.getMonth()-l.mAgo); var lbl=MONTHS[11-l.mAgo]||""; var stc=l.st==="Paid"?"good":l.st.indexOf("Declined")===0?"bad":"info";
+        return '<tr><td>'+lbl+' 1, '+m.getFullYear()+'</td><td>'+esc(l.desc)+'</td><td>'+p.card+'</td><td><span class="chip '+stc+'">'+esc(l.st)+'</span></td><td class="num">'+money(l.amt,2)+'</td></tr>'; }).join('')
+    + '</table></div></section>'
+    + '<section class="block"><h3>Attendance</h3><p class="panel-sub">Door scans and appointments from every location, last 90 days.</p>'
+    + tilesHTML([["Visits, 30 days",p.v30],["Visits / week",(p.v30/4.3).toFixed(1)],["Preferred location",p.loc],["Last visit",p.lastV===0?"Today":p.lastV+" days ago"]])
+    + '<div class="strip">'+Array.apply(null,{length:26}).map(function(_,i){ var on= i%Math.max(2,7-p.v30)===0; return '<i style="height:'+(on?ri(40,100):6)+'%;opacity:'+(on?1:.25)+'"></i>'; }).join('')+'</div>'
+    + '<div class="tscroll" style="margin-top:12px"><table class="tbl"><tr><th>When</th><th>Visit</th><th>Location</th><th>Entry</th></tr>'
+    + visits.slice(0,8).map(function(v){ return '<tr><td>'+v.d+' days ago</td><td>'+v.type+'</td><td>'+v.loc+'</td><td>Front-desk check-in</td></tr>'; }).join('')+'</table></div></section>'
+    + '<section class="block"><h3>Activity</h3><p class="panel-sub">Everything staff, the patient and the back-office agent did on this record.</p><div class="rowlist">'
+    + [[p.name+" joined on "+p.plan,"Source: "+p.src+" · "+p.loc, p.monthsIn+" months ago"],["Agent confirmed next appointment by text","Reminder chain", "3 days ago"],["Insurance verified for tomorrow's schedule","VSP eligibility OK","Yesterday"]].map(function(x){return '<div class="r"><div class="grow"><div class="ttl">'+esc(x[0])+'</div><div class="sub">'+esc(x[1])+'</div></div><span class="decided-time">'+x[2]+'</span></div>';}).join('')
+    + '</div></section></div>'
+    + '<div><section class="block"><h3>Contact</h3><div class="facts">'
+    + [["Email",'<span style="word-break:break-all">'+esc(p.email)+'</span>'],["Phone",p.phone],["Home location",p.loc],["Patient since",(p.monthsIn)+" months"],["Source",p.src]].map(function(x){return '<div><span class="k">'+x[0]+'</span><span class="v">'+x[1]+'</span></div>';}).join('')
+    + '</div></section>'
+    + '<section class="block"><h3>Marketing consent</h3><p class="panel-sub">Campaigns only reach patients with consent on.</p><div class="facts">'
+    + '<div><span class="k">Email — offers and recalls</span><input type="checkbox" class="toggle" checked onchange="toast(\'Demo — consent saved\')"></div>'
+    + '<div><span class="k">SMS — reminders by text</span><input type="checkbox" class="toggle" '+(rnd()<.8?'checked':'')+' onchange="toast(\'Demo — consent saved\')"></div>'
+    + '</div></section>'
+    + '<section class="block"><h3>Profile</h3><div class="facts">'
+    + [["Agreement",p.agree],["Contact-lens wearer",p.cl?"Yes":"No"],["Kids on plan",p.plan==="Family Plan"?"Included":"—"],["Recall due", p.lastV>365?"Overdue":"In "+ri(1,11)+" months"]].map(function(x){return '<div><span class="k">'+x[0]+'</span><span class="v">'+x[1]+'</span></div>';}).join('')
+    + '</div></section>'
+    + '<section class="block"><h3>Notes</h3><p class="empty">No notes yet. Notes show here and in the activity timeline at every location.</p></section>'
+    + '</div></div>' + foot();
+};
+
+VIEWS.billing=function(){
+  var a=agg(), tab=VIEWS.billing._t||"overview";
+  var body='';
+  if(tab==="overview"){
+    body = tilesHTML([
+      ["Dues collected this month",money(a.collected),money(a.collected-S.recovered[11])+" drafted · "+money(S.recovered[11])+" recovered","good"],
+      ["Next draft","Sun, Nov 15",money(a.nextDraft)+" expected from "+a.active.toLocaleString()+" patients"],
+      ["Declines being retried",money(a.pdSum*2.1),a.pdCount*3+" drafts · next try Fri, Nov 20 — payday"],
+      ["Recovery rate, 90 days","65%",money(S.recovered.slice(9).reduce(function(s,v){return s+v;},0))+" of declined dues won back by payday retries","good"],
+      ["Paused patients",String(a.paused),ri(20,40)+" resume in the next 7 days"],
+      ["Early resumes, 30 days","23","ended their pause by checking in · dues prorated"]
+    ])
+    + '<div class="cols2"><section class="block"><h3>Dues collected, last 12 months</h3><p class="panel-sub">'+money(S.collected.reduce(function(s,v){return s+v;},0))+' collected, '+money(S.recovered.reduce(function(s,v){return s+v;},0))+' of it recovered from declined drafts.</p>'
+    + stackSVG({labels:MONTHS,series:[{name:"Drafts cleared",color:"var(--c2)",values:S.collected.map(function(v,i){return v-S.recovered[i];})},{name:"Recovered by retries",color:"var(--c3)",values:S.recovered}]})
+    + '</section><section class="block"><h3>Today · Sun, Nov 15</h3><div class="rowlist">'
+    + [["Draft run 4:00 AM — completed",a.active.toLocaleString()+" drafts attempted",money(a.nextDraft)],["Next retry Fri, Nov 20, 6:00 AM","278 patients on the payday retry",money(a.pdSum*1.4)],["Pauses ending this week","D. Whitfield, A. Boone + 9 more","—"]].map(function(x){return '<div class="r"><div class="grow"><div class="ttl">'+x[0]+'</div><div class="sub">'+x[1]+'</div></div><span class="money">'+x[2]+'</span></div>';}).join('')
+    + '</div></section></div>';
+  } else if(tab==="drafts"){
+    var runs=[]; ["Sun, Nov 15","Tue, Dec 1"].forEach(function(d){ LOCS.forEach(function(l){ var ps=P.filter(function(p){return p.loc===l&&p.status!=="cancelled";}); runs.push([d,l,ps.length,money(ps.reduce(function(s,p){return s+p.dues;},0)*0.985)+" expected","Scheduled"]); }); });
+    [["Sun, Nov 1"],["Thu, Oct 15"],["Thu, Oct 1"]].forEach(function(d){ LOCS.forEach(function(l){ var ps=P.filter(function(p){return p.loc===l&&p.status!=="cancelled";}); var att=ps.length; var dec=Math.round(att*0.055);
+      runs.push([d[0],l,att,money(ps.reduce(function(s,p){return s+p.dues;},0)*0.945)+" collected · "+dec+" declined","Completed"]); }); });
+    body='<section class="block"><h3>Draft runs</h3><p class="panel-sub">Dues draft at 4:00 AM on the 1st and 15th. Open a run for its results or, before it runs, what it will charge.</p><div class="tscroll"><table class="tbl"><tr><th>Date</th><th>Location</th><th class="num">Attempted</th><th>Result</th><th>Status</th></tr>'
+      + runs.map(function(r){ return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td class="num">'+r[2].toLocaleString()+'</td><td>'+r[3]+'</td><td><span class="chip '+(r[4]==="Scheduled"?"info":"good")+'">'+r[4]+'</span></td></tr>'; }).join('')+'</table></div></section>';
+  } else if(tab==="declines"){
+    var dp=P.filter(function(p){return p.status==="past_due"&&inLoc(p);}).slice(0,12);
+    body='<section class="block"><h3>Declines in the retry window</h3><p class="panel-sub">Retries run on each patient\'s usual payment day, up to 21 days, then card-update links. 65% settle before the window closes.</p><div class="tscroll"><table class="tbl"><tr><th>Patient</th><th>Location</th><th>Reason</th><th class="num">Owed</th><th>Next try</th><th></th></tr>'
+      + dp.map(function(p){ return '<tr class="click" data-id="'+p.id+'"><td><b>'+esc(p.name)+'</b></td><td>'+p.loc+'</td><td>Insufficient funds</td><td class="num">'+money(p.pastDue,2)+'</td><td>Fri, Nov 20 — payday</td><td><span class="chip bad">Retrying</span></td></tr>'; }).join('')+'</table></div></section>';
   } else {
-    aiSay("In this demo I handle a scripted set of requests — try one of the suggestions below. In a live build, this assistant runs your real calendar, invoices and messages, and always asks before acting.");
-    drawChips();
+    body='<section class="block"><h3>Plans</h3><div class="tscroll"><table class="tbl"><tr><th>Plan</th><th class="num">Price</th><th class="num">Patients</th><th class="num">Monthly dues</th></tr>'
+      + PLANS.map(function(pl){ var ps=A().filter(function(p){return p.plan===pl[0];}); return '<tr><td><b>'+pl[0]+'</b></td><td class="num">'+money(pl[1],2)+'</td><td class="num">'+ps.length.toLocaleString()+'</td><td class="num">'+money(ps.length*pl[1])+'</td></tr>'; }).join('')+'</table></div></section>';
   }
-}
-$('ai-send').addEventListener('click', function(){
-  var v = $('ai-input').value.trim();
-  if (!v) return;
-  $('ai-input').value = '';
-  ask(v);
-});
-$('ai-input').addEventListener('keydown', function(e){
-  if (e.key === 'Enter') { e.preventDefault(); $('ai-send').click(); }
-});
+  $('#main').innerHTML='<h2>Billing</h2><p class="panel-sub">Dues, draft runs, pauses and declined payments.</p>'
+    + '<div class="seg">'+[["overview","Overview"],["drafts","Draft runs"],["declines","Declines"],["plans","Plans"]].map(function(s){return '<button data-t="'+s[0]+'" aria-pressed="'+(tab===s[0])+'">'+s[1]+'</button>';}).join('')+'</div>'
+    + body + foot();
+  $$('.seg button').forEach(function(b){ b.addEventListener('click',function(){ VIEWS.billing._t=b.getAttribute('data-t'); VIEWS.billing(); }); });
+  $$('tr.click').forEach(function(tr){ tr.addEventListener('click',function(){ location.hash='patient-'+tr.getAttribute('data-id'); }); });
+};
 
-render();
+VIEWS.frontdesk=function(){
+  var sched=[], t=8*60;
+  var names=A().slice(0,28);
+  for(var i=0;i<22;i++){ t+= pick([20,20,30,40]); var hh=Math.floor(t/60), mm=t%60; var p=names[i];
+    sched.push({tm:((hh+11)%12+1)+":"+String(mm).padStart(2,"0")+(hh<12?" AM":" PM"), p:p, type:pick(["Annual exam","CL check","Frame pickup","Field test","Adjustment"]),
+      st: t<11.5*60 ? pick(["Checked in","Roomed","Done"]) : "Scheduled"}); }
+  $('#main').innerHTML='<h2>Front desk</h2><p class="panel-sub">Today\'s schedule, check-ins and holds · '+(LOC==='all'?'all locations':LOC)+'</p>'
+    + tilesHTML([["Appointments today","47","9 open slots left"],["Checked in","26","4 in the lobby now"],["Walk-ins","6","2 waiting"],["Balance holds at check-in","2","collected at the desk, retry queued","bad"]])
+    + '<div class="cols2"><section class="block"><h3>Schedule</h3><div class="tscroll"><table class="tbl"><tr><th>Time</th><th>Patient</th><th>Visit</th><th>Status</th></tr>'
+    + sched.map(function(s){ var c=s.st==="Done"?"":s.st==="Scheduled"?"info":"good";
+      return '<tr class="click" data-id="'+s.p.id+'"><td>'+s.tm+'</td><td><b>'+esc(s.p.name)+'</b></td><td>'+s.type+'</td><td><span class="chip '+c+'">'+s.st+'</span></td></tr>'; }).join('')
+    + '</table></div></section>'
+    + '<section class="block"><h3>Holds & flags</h3><div class="rowlist">'
+    + [["R. Soto — card declined at check-in 8:14 AM","Copay collected in cash · payday retry queued","bad","Billing hold"],
+       ["M. Price — ID didn\'t match insurance on file","Desk updated the record · re-verified OK","warn","Fixed"],
+       ["Walk-in: new patient asked for Spanish","Routed to María at the desk · booked exam","good","Booked"]].map(function(x){return '<div class="r"><div class="grow"><div class="ttl">'+esc(x[0])+'</div><div class="sub">'+esc(x[1])+'</div></div><span class="chip '+x[2]+'">'+x[3]+'</span></div>';}).join('')
+    + '</div><p class="srcline">Insurance for tomorrow\'s schedule was pre-verified overnight by the agent — 2 mismatches already flagged.</p></section></div>' + foot();
+  $$('tr.click').forEach(function(tr){ tr.addEventListener('click',function(){ location.hash='patient-'+tr.getAttribute('data-id'); }); });
+};
+
+VIEWS.optical=function(){
+  var sales=[], t=0;
+  for(var i=0;i<9;i++){ var pr=pick(PRODUCTS); var p=pick(A()); var amt=pr[1]*(pr[1]?1:0)||ri(9,60); t+=amt;
+    sales.push({tm:(ri(1,8))+":"+String(ri(10,59))+" PM", r:"SPR-10"+(60-i), it:pr[0], who:p.name, pay:pick(["Visa •3433","On file","Cash","MC •7565"]), amt:amt}); }
+  $('#main').innerHTML='<h2>Optical sales</h2><p class="panel-sub">Register: contact lenses, frames and accessories. Patients get 10% off retail and can charge the card on file.</p>'
+    + tilesHTML([["Sales today",money(760),"14 sales so far"],["Pro-shop this month",money(S.optical30.reduce(function(s,v){return s+v;},0)),"before tax"],["Items under reorder point","3","PO drafted — $258","bad"],["Avg sale",money(54),"last 30 days"]])
+    + '<div class="cols2"><section class="block"><h3>Products</h3><div class="tscroll"><table class="tbl"><tr><th>Item</th><th class="num">Price</th><th class="num">On hand</th></tr>'
+    + PRODUCTS.map(function(p){ var low=p[2]<30; return '<tr><td><b>'+p[0]+'</b>'+(low?' <span class="chip bad">Low</span>':'')+'</td><td class="num">'+(p[1]?money(p[1],2):"Free")+'</td><td class="num">'+p[2]+'</td></tr>'; }).join('')
+    + '</table></div></section>'
+    + '<section class="block"><h3>Today\'s sales</h3><div class="tscroll"><table class="tbl"><tr><th>Time</th><th>Receipt</th><th>Items</th><th>Paid with</th><th class="num">Total</th></tr>'
+    + sales.map(function(s){ return '<tr><td>'+s.tm+'</td><td>'+s.r+'</td><td>'+esc(s.it)+'<div class="sub" style="color:var(--mut);font-size:11px">'+esc(s.who)+'</div></td><td>'+s.pay+'</td><td class="num">'+money(s.amt,2)+'</td></tr>'; }).join('')
+    + '</table></div>'+barSVG({values:S.optical30,labels:MONTHS,color:'var(--c2)',fmt:function(v){return money(v);},title:"Optical sales by month"})+'</section></div>' + foot();
+};
+
+VIEWS.staff=function(){
+  $('#main').innerHTML='<h2>Staff & payroll</h2><p class="panel-sub">Both locations · pay period Nov 1 – Nov 14</p>'
+    + tilesHTML([["Payroll this period",money(38404),"21 people"],["On shift now","9","front desk, opticians, techs"],["Payroll exceptions","2","missed punches at Medical Center","bad"],["Overtime hours","6.5","flagged for review"]])
+    + '<section class="block"><h3>Team</h3><div class="tscroll"><table class="tbl"><tr><th>Name</th><th>Role</th><th>Location</th><th class="num">Hours (period)</th></tr>'
+    + STAFF.map(function(s){ return '<tr><td><b>'+esc(s.name)+'</b></td><td>'+s.role+'</td><td>'+s.loc+'</td><td class="num">'+s.hrs*2+'</td></tr>'; }).join('')
+    + '</table></div></section>' + foot();
+};
+
+VIEWS.leads=function(){
+  $('#main').innerHTML='<div class="between"><div><h2>Leads</h2><p class="panel-sub">Every prospect from first touch to signed plan — including the ones the AI receptionist booked overnight.</p></div><button class="act primary" onclick="toast(\'Demo\')">+ Add lead</button></div>'
+    + '<div class="board">'+LSTAGES.map(function(st){
+      var items=LEADS.filter(function(l){return l.stage===st[0];});
+      var v=items.reduce(function(s,l){return s+l.val;},0);
+      return '<div class="col"><div class="head"><span class="sdot" style="background:'+st[2]+'"></span><b>'+st[1]+'</b><span class="n">'+items.length+'</span><span class="sum">'+money(v)+'/mo</span></div><div class="cards">'
+        + items.map(function(l){ return '<div class="cardk"><div class="who">'+esc(l.name)+'</div><div class="sub">'+(l.val>=39?'Vision + Contacts':'Vision plan')+' · '+pick(LOCS)+'</div><div class="chips"><span class="chip '+(l.src==="AI receptionist"?"acc":l.src==="Website"?"info":"")+'">'+l.src+'</span>'+(l.ah?'<span class="chip acc">After hours</span>':'')+'</div><div class="next">Added '+l.days+'d ago<br><b>Next:</b> '+esc(l.next)+'<br>'+esc(l.owner)+'</div></div>'; }).join('')
+        + '</div></div>'; }).join('')+'</div>'
+    + '<p class="srcline">Lead → patient rate, 30 days: <b>17%</b> · median first response: <b>1.1 hr</b> — AI receptionist 4 sec, staff 1.8 hr.</p>' + foot();
+};
+
+VIEWS.receptionist=function(){
+  $('#main').innerHTML='<div class="between"><div><h2>AI receptionist</h2><p class="panel-sub">Every call answered, recorded and transcribed. Anything uncertain is transferred to a person.</p></div><button class="act primary" id="simcall">▶ Simulate incoming call</button></div>'
+    + tilesHTML([["Answered last night","38","10 PM – 8 AM, desk closed","good"],["Exams booked overnight","10","19 leads captured"],["Median first response","4 sec","staff by phone: 1.8 hr","good"],["Cancel-saves this week","4",money(1140)+" of visits kept"]])
+    + '<section class="block"><h3>Call log — last 24 hours</h3><p class="panel-sub">Tap any call for the transcript.</p><div id="livecall"></div><div id="calls">'
+    + CALLS.map(function(c){ return '<details class="callrow"><summary tabindex="0"><div class="r"><span class="meta">'+c.t+'</span><div class="grow"><div class="ttl">'+esc(c.w)+'</div><div class="sub">'+esc(c.x)+'</div></div>'+c.c.map(function(ch){return '<span class="chip '+ch[0]+'">'+ch[1]+'</span>';}).join('')+'<span class="money">'+c.v+'</span><span class="meta">'+c.d+'</span></div></summary><div class="transcript">'+c.tr+'</div></details>'; }).join('')
+    + '</div></section>' + foot();
+  var simRunning=false, reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  $('#simcall').addEventListener('click',function(){
+    if(simRunning)return; simRunning=true;
+    var lines=[["AI","Thank you for calling Summit Eye Care — how can I help?"],["Caller","I'd like to schedule an eye exam. I'm a new patient."],["AI","Happy to help. Thursday 2:40 or Friday 10:15 — which works better?"],["Caller","Friday at 10:15."],["AI","And which insurance will you be using?"],["Caller","VSP."],["AI","Perfect — you're booked for Friday at 10:15. Confirmation text on the way."]];
+    var box=$('#livecall'); box.innerHTML='<div class="ringing"><div class="r"><span><span class="pulse"></span><b>Incoming call</b></span><span class="meta">New caller · (210) 555-0164</span></div><div id="simlines"></div></div>';
+    var i=0, lv=$('#simlines');
+    (function next(){ if(i<lines.length){ var l=lines[i++]; lv.innerHTML+='<div class="tline"><b>'+l[0]+':</b> '+l[1]+'</div>'; lv.lastElementChild.scrollIntoView({block:'nearest'}); setTimeout(next, reduced?60:1050); }
+      else { box.innerHTML=''; $('#calls').insertAdjacentHTML('afterbegin','<details class="callrow" open><summary tabindex="0"><div class="r"><span class="meta">Just now</span><div class="grow"><div class="ttl">New patient — (210) 555-0164</div><div class="sub">New patient exam Friday 10:15 — VSP verified</div></div><span class="chip good">Booked</span><span class="money">$300</span><span class="meta">1:12</span></div></summary><div class="transcript">'+lines.map(function(l){return '<b>'+l[0]+':</b> '+l[1];}).join(' ')+'</div></details>');
+        toast("Booked — $300 exam added to Friday"); simRunning=false; } })();
+  });
+};
+
+VIEWS.campaigns=function(){
+  $('#main').innerHTML='<div class="between"><div><h2>Campaigns</h2><p class="panel-sub">Every send, with what it actually did.</p></div><a class="act primary" href="#newcampaign" style="text-decoration:none">+ New campaign</a></div>'
+    + tilesHTML([["Campaigns","8"],["Messages this month","2,214","email and SMS, every campaign"],["Patients won back (30d)","49","plus "+money(2676)+" in past-due balances recovered","good"],["Scheduled · drafts","1 · 1"]])
+    + '<section class="block"><div class="tscroll"><table class="tbl"><tr><th>Campaign</th><th>Status</th><th>Channel</th><th>Sent</th><th class="num">Audience</th><th class="num">Delivered</th><th class="num">Clicks</th><th>Result</th></tr>'
+    + CAMPAIGNS.map(function(c){ return '<tr><td><b>'+esc(c.n)+'</b><div class="sub" style="color:var(--mut);font-size:11px">'+esc(c.s)+'</div></td><td><span class="chip '+c.st[0]+'">'+c.st[1]+'</span></td><td>'+c.ch+'</td><td>'+c.sent+'</td><td class="num">'+c.a+'</td><td class="num">'+c.d+'</td><td class="num">'+c.cl+'</td><td><b>'+c.res+'</b></td></tr>'; }).join('')
+    + '</table></div></section>'
+    + '<section class="block"><h3>Segments</h3><p class="panel-sub">Saved audiences with live counts. Deceased and cancelled patients are never counted.</p><div class="tscroll"><table class="tbl"><tr><th>Segment</th><th class="num">Patients</th><th class="num">Reachable by email</th><th class="num">Reachable by SMS</th><th></th></tr>'
+    + [["Past due · balance $1+",94,82,66],["Recall overdue · 14+ months",247,231,198],["CL wearers · reorder window",122,119,104],["Lapsed after summer",186,174,151]].map(function(s){ return '<tr><td><b>'+s[0]+'</b></td><td class="num">'+s[1]+'</td><td class="num">'+s[2]+'</td><td class="num">'+s[3]+'</td><td><button class="act" onclick="toast(\'Demo\')">Use</button></td></tr>'; }).join('')
+    + '</table></div></section>' + foot();
+};
+
+VIEWS.newcampaign=function(){
+  $('#main').innerHTML='<div class="crumb"><a href="#campaigns">Campaigns</a> › New campaign</div>'
+    + '<h2>Hot CL-reorder window at Stone Oak</h2><p class="panel-sub">Pick who it\'s for from live visits and billing, write the message, then send or schedule it.</p>'
+    + '<div class="cols2"><div><section class="block"><h3>Describe who you want</h3><p class="panel-sub">In your own words. It becomes rules you can check and change below.</p>'
+    + '<textarea class="aud" id="audtxt">Contact-lens wearers at Stone Oak whose supply lapsed in the last 3 months</textarea>'
+    + '<div class="drow" style="display:flex;gap:8px;margin-top:10px"><button class="act primary" id="buildaud">⚡ Build audience</button><span style="color:var(--mut);font-size:12px;align-self:center">Visits, plan, billing, recall dates, Kids Club and CL supply all work.</span></div>'
+    + '<div style="margin-top:14px"><h3>Rules</h3><p class="panel-sub">Patients must match every rule.</p><div id="rules">'
+    + [["WHERE","Status","is","Active"],["AND","Contact-lens wearer","is","Yes"],["AND","Home location","is","Stone Oak"],["AND","Supply lapsed, last 90 days","is","Yes"]].map(function(r){
+      return '<div class="rule"><span class="chip">'+r[0]+'</span><span class="pillbox">'+r[1]+'</span><span>'+r[2]+'</span><span class="pillbox">'+r[3]+'</span></div>'; }).join('')
+    + '</div><button class="act" style="margin-top:8px" onclick="toast(\'Demo\')">+ Add rule</button></div></section></div>'
+    + '<div><section class="block"><h3>Audience</h3><p class="panel-sub">Stone Oak patients</p><div class="v" style="font-family:var(--display);font-size:34px;font-weight:700" id="audn">64</div><p class="panel-sub" id="audsub">patients get it · 71 match the rules · 64 messages</p>'
+    + '<div class="excl"><b>Left out automatically — 7</b><br>Deceased 0 · Cancelled 2 · Opted out of SMS 5<br><br>Never messaged: deceased and cancelled patients, and anyone who opted out. Nobody has to filter these by hand.</div>'
+    + '<div class="lheadish" style="margin-top:14px;font-size:11px;letter-spacing:.6px;text-transform:uppercase;color:var(--mut);font-weight:700">A few of them</div><div class="rowlist">'
+    + A().filter(function(p){return p.cl&&p.loc==="Stone Oak";}).slice(0,4).map(function(p){ return '<div class="r"><div class="grow"><div class="ttl">'+esc(p.name)+'</div><div class="sub">Active · '+p.plan+' · CL wearer</div></div></div>'; }).join('')
+    + '</div><button class="act primary" style="width:100%;margin-top:12px" onclick="toast(\'Demo — continue to message\')">Continue to message</button></section></div></div>' + foot();
+  $('#buildaud').addEventListener('click',function(){ var n=ri(58,86); $('#audn').textContent=n; $('#audsub').textContent='patients get it · '+(n+7)+' match the rules · '+n+' messages'; toast('Audience rebuilt from your words'); });
+};
+
+VIEWS.reports=function(){
+  var tab=VIEWS.reports._t||"growth", body='';
+  if(tab==="growth"){
+    var last90=SOURCES.map(function(s){ return {s:s, n:S.joins.slice(9).reduce(function(t,m){return t+m[s];},0)}; });
+    var tot90=last90.reduce(function(t,x){return t+x.n;},0);
+    body = tilesHTML([["Joins, last 90 days",String(tot90),S.joins.reduce(function(t,m){return t+SOURCES.reduce(function(s,k){return s+m[k];},0);},0)+" in 12 months"],["Monthly dues from those joins",money(tot90*27.4),"from patients still on the book"],["Top source","Walk-in","26% of joins in 90 days"],["Still a patient at 90 days","92.8%","best: Website, 94.9%","good"]])
+    + '<section class="block"><h3>Joins by source</h3><p class="panel-sub">New agreements each month, by where the patient first came from.</p>'
+    + stackSVG({labels:MONTHS,series:SOURCES.map(function(s,i){ return {name:s,color:'var(--c'+(i+1)+')',values:S.joins.map(function(m){return m[s];})}; })})
+    + '</section>'
+    + '<section class="block"><h3>Sources</h3><p class="panel-sub">Joins in the last 90 days and what they\'re worth. Retention looks at patients who joined 3 to 15 months ago, so every one has had 90 days.</p><div class="tscroll"><table class="tbl"><tr><th>Source</th><th class="num">Joins, 90 days</th><th class="num">Share</th><th class="num">Monthly dues they bring</th><th class="num">Still a patient at 90 days</th></tr>'
+    + last90.map(function(x,i){ return '<tr><td><span style="display:inline-flex;align-items:center;gap:7px"><i style="width:9px;height:9px;border-radius:3px;background:var(--c'+(i+1)+');display:inline-block"></i><b>'+x.s+'</b></span></td><td class="num">'+x.n+'</td><td class="num">'+pct(100*x.n/tot90,1)+'</td><td class="num">'+money(x.n*27.4)+'</td><td class="num">'+pct(90+rnd()*5,1)+'</td></tr>'; }).join('')
+    + '</table></div></section>';
+  } else if(tab==="retention"){
+    body = tilesHTML([["Cancellations, last 30 days","9","187 in 12 months"],["Average monthly churn","0.94%","last 11 full months","good"],["Active, no visit in 21+ days","486","most likely to cancel next","bad"],["Monthly dues at risk",money(13310),"what those patients pay each month","bad"]])
+    + '<div class="cols2" style="grid-template-columns:1fr 1fr"><section class="block"><h3>Cancellations by month</h3>'
+    + barSVG({values:S.cancels,labels:MONTHS,color:'var(--c5)'})
+    + '</section><section class="block"><h3>Why patients leave</h3><p class="panel-sub">Every cancellation in the last 12 months.</p><div class="tscroll"><table class="tbl"><tr><th>Reason</th><th class="num">Cancellations</th><th class="num">Share</th></tr>'
+    + [["Not using it",50,26.5],["Moved away",47,25.3],["Cost",40,21.3],["Switched provider",26,13.9],["Other",24,13.0]].map(function(r){ return '<tr><td>'+r[0]+'</td><td class="num">'+r[1]+'</td><td class="num">'+pct(r[2],1)+'</td></tr>'; }).join('')
+    + '</table></div></section></div>'
+    + '<section class="block"><h3>At-risk patients</h3><p class="panel-sub">No visit in 21+ days — the ones who stop coming are the ones who cancel next. The win-back campaign works this list.</p><div class="rowlist">'
+    + A().filter(function(p){return p.lastV>21&&p.status==="active";}).slice(0,5).map(function(p){ return '<div class="r"><div class="grow"><div class="ttl">'+esc(p.name)+'</div><div class="sub">'+p.plan+' · last visit '+p.lastV+' days ago</div></div><span class="money">'+money(p.dues*12)+'/yr</span><span class="chip warn">At risk</span></div>'; }).join('')
+    + '</div></section>';
+  } else {
+    var allP=A(); var older=Math.round(allP.length*0.18);
+    body = tilesHTML([["Monthly dues on the book",money(agg().dues),allP.length.toLocaleString()+" active and past-due patients"],["Average dues",money(agg().dues/allP.length,2),"per patient per month"],["Recovered by retries, 12 months",money(S.recovered.reduce(function(s,v){return s+v;},0)),"65% of settled declines","good"],["Patients on an older rate",String(older),money(older*4.1)+" a month below today's prices","bad"]])
+    + '<section class="block"><h3>Dues by plan</h3><p class="panel-sub">What active and past-due patients pay each month, by plan.</p><div class="tscroll"><table class="tbl"><tr><th>Plan</th><th class="num">Patients</th><th class="num">Monthly dues</th><th class="num">Share</th><th class="num">Average rate</th><th class="num">Today\'s rate</th></tr>'
+    + PLANS.map(function(pl){ var ps=allP.filter(function(p){return p.plan===pl[0];}); var d=ps.length*pl[1];
+        return '<tr><td><b>'+pl[0]+'</b></td><td class="num">'+ps.length.toLocaleString()+'</td><td class="num">'+money(d)+'</td><td class="num">'+pct(100*d/agg().dues,1)+'</td><td class="num">'+money(pl[1]-0.4-rnd(),2)+'</td><td class="num">'+money(pl[1],2)+'</td></tr>'; }).join('')
+    + '<tr><td><b>All plans</b></td><td class="num"><b>'+allP.length.toLocaleString()+'</b></td><td class="num"><b>'+money(agg().dues)+'</b></td><td class="num"><b>100%</b></td><td class="num">'+money(agg().dues/allP.length,2)+'</td><td class="num">–</td></tr></table></div></section>'
+    + '<section class="block"><h3>Collections recovery</h3><p class="panel-sub">Declined drafts each month and how much the payday retries and card-update links brought back. Runs from the last 21 days are still being retried.</p>'
+    + stackSVG({labels:MONTHS,series:[{name:"Declined",color:"var(--c5)",values:S.recovered.map(function(v){return Math.round(v*1.55);})},{name:"Recovered by retries",color:"var(--c3)",values:S.recovered}]})
+    + '</section>';
+  }
+  $('#main').innerHTML='<h2>Reports</h2><p class="panel-sub">'+(LOC==='all'?'All locations':LOC)+'. Every figure is worked out from the patient book and billing, so it matches what each screen shows.</p>'
+    + '<div class="seg">'+[["growth","Growth & attribution"],["retention","Retention"],["revenue","Revenue"]].map(function(s){return '<button data-t="'+s[0]+'" aria-pressed="'+(tab===s[0])+'">'+s[1]+'</button>';}).join('')+'</div>'
+    + body + foot();
+  $$('.seg button').forEach(function(b){ b.addEventListener('click',function(){ VIEWS.reports._t=b.getAttribute('data-t'); VIEWS.reports(); }); });
+};
+
+VIEWS.agent=function(){
+  var w=VIEWS.agent._w || (VIEWS.agent._w=WAITING.slice());
+  var dec=VIEWS.agent._d || (VIEWS.agent._d=DECIDED.slice());
+  $('#main').innerHTML='<h2>Back-office agent</h2><p class="panel-sub">The repetitive billing, front-desk and follow-up work the agent does, and the calls it leaves to you.</p>'
+    + tilesHTML([["Tasks completed, 30 days","1,140","363 this week"],["Staff hours saved, 30 days","106","about 0.6 full-time people"],["Dues recovered by retries, 30 days",money(S.recovered[11]),"12 patients","good"],["Decisions waiting on you",String(w.length),"charges, patient texts and sign-offs"]])
+    + '<section class="block"><div class="between"><h3>Waiting on you <span class="q-count">'+ (w.length||'') +'</span></h3></div><p class="panel-sub">It never charges a card, cancels an appointment or texts a patient list without a person. Each decision carries the agent\'s recommendation — you approve or decline.</p><div class="rowlist" id="waiting">'
+    + (w.length? w.map(function(x,i){ return '<div><div class="r"><div class="grow"><div class="ttl">'+esc(x.t)+'</div><div class="sub">'+esc(x.s)+'</div></div><span class="chip '+x.c[0]+'">'+x.c[1]+'</span><span class="money">'+x.m+'</span><button class="act ghostbad" data-dec="'+i+'">✕ Decline</button><button class="act primary" data-app="'+i+'">✓ Approve</button></div><div class="rec">'+x.rec+'</div></div>'; }).join('') : '<div class="empty">Queue clear — nothing is waiting on you.</div>')
+    + '</div></section>'
+    + '<section class="block"><h3>What the agent does</h3><p class="panel-sub">9 of 9 jobs are on. Switch one off and staff go back to doing it by hand; the rest of the system notices straight away.</p><div class="jobs">'
+    + JOBS.map(function(j){ return '<div class="job"><div class="head"><b>'+j.n+'</b><span class="tog" title="On"></span></div><span class="chip '+(j.m?'good':'')+'" style="align-self:flex-start">'+(j.m?'On · moves money':'On')+'</span><div class="what">'+j.w+'</div><div class="before"><b>Before:</b> '+j.b+'</div><div class="stats"><div><div class="k">Runs, 30 days</div><div class="v">'+j.r+'</div></div><div><div class="k">Staff time saved</div><div class="v">'+j.h+'</div></div><div><div class="k">By hand, each</div><div class="v">'+j.e+'</div></div></div></div>'; }).join('')
+    + '</div></section>'
+    + '<section class="block"><h3>Decided</h3><p class="panel-sub">What was handled after approval, most recent first.</p><div class="rowlist">'
+    + dec.map(function(x){ return '<div class="r"><div class="grow"><div class="ttl">'+esc(x.t)+'</div><div class="sub">'+esc(x.s)+'</div></div><span class="decided-time">'+esc(x.time)+'</span></div>'; }).join('')
+    + '</div></section>' + foot();
+  $('#waiting').addEventListener('click',function(e){
+    var a=e.target.closest('[data-app]'), d=e.target.closest('[data-dec]'); if(!a&&!d) return;
+    var i=Number((a||d).getAttribute(a?'data-app':'data-dec'));
+    var item=w.splice(i,1)[0];
+    dec.unshift(a? {t:item.t.replace(/^Send /,'Sent ').replace(/^Retry /,'Retried ').replace(/^Offer /,'Offered '), s:item.s, time:"Just now"}
+                 : {t:"Declined: "+item.t.charAt(0).toLowerCase()+item.t.slice(1), s:"Nothing was sent or charged. The agent re-raises it only if the numbers change.", time:"Just now"});
+    VIEWS.agent();
+  });
+};
+
+/* ============ search & location ============ */
+var sd=$('#searchdrop');
+$('#search').addEventListener('input',function(){
+  var q=this.value.trim().toLowerCase();
+  if(q.length<2){ sd.hidden=true; return; }
+  var hits=P.filter(function(p){return p.name.toLowerCase().indexOf(q)>-1;}).slice(0,8);
+  sd.innerHTML=hits.length? hits.map(function(p){return '<button data-id="'+p.id+'"><b>'+esc(p.name)+'</b> <span class="m">· '+p.plan+' · '+p.loc+'</span></button>';}).join('') : '<button disabled><span class="m">No patients match</span></button>';
+  sd.hidden=false;
+});
+sd.addEventListener('click',function(e){ var b=e.target.closest('button[data-id]'); if(!b)return; sd.hidden=true; $('#search').value=''; location.hash='patient-'+b.getAttribute('data-id'); });
+document.addEventListener('click',function(e){ if(!e.target.closest('#searchwrap')) sd.hidden=true; });
+document.addEventListener('keydown',function(e){ if((e.metaKey||e.ctrlKey)&&e.key==='k'){ e.preventDefault(); $('#search').focus(); } });
+$('#loc').addEventListener('change',function(){ LOC=this.value; route(); });
+
+route();
 </script>
 
 </body>
