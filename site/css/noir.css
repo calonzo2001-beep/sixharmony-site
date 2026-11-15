@@ -117,6 +117,20 @@ section.sec.tight{padding-block:60px}
 .person span{display:block;color:var(--mut);font-size:13.5px;margin:6px 0 14px}
 .person a{color:var(--gold-soft);font-size:13.5px;font-weight:600}
 
+/* founder */
+.founder{display:grid;grid-template-columns:300px 1fr;gap:54px;align-items:start}
+.founder>*{min-width:0}
+.founder .pic img{width:100%;border-radius:16px;object-fit:cover;aspect-ratio:4/5;border:1px solid var(--line)}
+.founder .pic b{display:block;margin-top:14px;font-size:16px}
+.founder .pic span{display:block;color:var(--mut);font-size:13px;margin-top:4px}
+.founder .pic a{color:var(--gold-soft);font-size:13px;font-weight:600}
+.founder p{color:var(--mut);font-size:16px;line-height:1.7;margin:0 0 16px;max-width:60ch}
+.founder p b{color:var(--fg)}
+.founder .principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:26px}
+.founder .principles div{border-top:2px solid var(--gold);padding-top:12px}
+.founder .principles b{display:block;font-size:14px;margin-bottom:5px}
+.founder .principles span{color:var(--mut);font-size:13px}
+@media (max-width:860px){.founder{grid-template-columns:1fr;gap:26px}.founder .pic{max-width:260px}}
 /* FAQ */
 .faq{max-width:760px;margin:0 auto}
 .faq details{border-top:1px solid var(--line)}
