@@ -50,13 +50,14 @@ h3{font-size:19px;font-weight:600;letter-spacing:-0.01em;margin:0 0 6px}
 /* hero */
 .hero{position:relative;overflow:hidden;text-align:center;padding-top:76px}
 .hero .sky{position:absolute;inset:0;z-index:-1;background:
-  radial-gradient(90% 46% at 50% 68%, rgba(222,140,60,.34), transparent 70%),
-  linear-gradient(180deg,#141a24 0%,#1d2634 30%,#3a3a44 52%,#8a5a34 66%,#c9833f 72%,#241a12 80%,var(--bg) 92%)}
+  radial-gradient(70% 50% at 50% 62%, rgba(201,162,39,.10), transparent 70%),
+  radial-gradient(120% 80% at 50% -20%, #141a26 0%, #0d1016 45%, var(--bg) 100%)}
 .hero .sky::after{content:"";position:absolute;inset:0;background:
-  linear-gradient(180deg,transparent 60%,rgba(10,11,13,.55) 82%,var(--bg) 97%)}
-.hero .wrap{position:relative}
+  linear-gradient(180deg,transparent 55%,rgba(10,11,13,.5) 80%,var(--bg) 97%)}
+.hero .waves{position:absolute;left:50%;transform:translateX(-50%);top:180px;width:max(1100px,100%);max-width:1700px;z-index:0;pointer-events:none}
+.hero .wrap{position:relative;z-index:1}
 .hero .lede{margin-inline:auto}
-.shot{margin:54px auto -2px;max-width:980px;border:1px solid rgba(255,255,255,.14);border-bottom:none;border-radius:16px 16px 0 0;overflow:hidden;box-shadow:0 -10px 80px rgba(0,0,0,.5);background:#0d0e11}
+.shot{margin:54px auto -2px;max-width:980px;border:1px solid rgba(255,255,255,.14);border-bottom:none;border-radius:16px 16px 0 0;overflow:hidden;box-shadow:0 -6px 34px rgba(0,0,0,.32);background:#0d0e11}
 .shot img{display:block}
 .shot-free{margin:34px auto 0;max-width:980px;border:1px solid rgba(255,255,255,.12);border-radius:16px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.5);background:#0d0e11}
 .shot-free img{display:block}
@@ -139,6 +140,7 @@ footer.site-foot a:hover{color:var(--fg)}
 .foot-line{width:100%;color:var(--dim)}
 
 @media (max-width:860px){
+  .hero .waves{width:1500px;max-width:none;left:0;transform:translateX(-70%);top:350px}
   .menu-btn{display:block}
   .nav{display:none;position:absolute;top:64px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;padding:18px 22px;gap:16px}
   .nav.open{display:flex}
