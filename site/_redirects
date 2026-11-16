@@ -1,7 +1,16 @@
-/clinics.html     /ai-receptionist-eye-care.html             301
-/clinics          /ai-receptionist-eye-care.html             301
-/industrial.html  /ai-back-office-industrial-services.html   301
-/industrial       /ai-back-office-industrial-services.html   301
+# One-page site: old pages land on the matching section of the homepage
+/ai-receptionist-eye-care.html            /#eye-care     301!
+/ai-back-office-industrial-services.html  /#industrial   301!
+/ai-front-desk-gyms.html                  /#gyms         301!
+/demos.html        /#demo        301!
+/about.html        /#about       301!
+/eye-care          /#eye-care    301
+/clinics.html      /#eye-care    301
+/clinics           /#eye-care    301
+/industrial.html   /#industrial  301
+/industrial        /#industrial  301
+/gyms              /#gyms        301
+/gyms.html         /#gyms        301
 /demo             https://sixharmony.luminasales.io/eye-care-demo        302
 /eye-care-demo    https://sixharmony.luminasales.io/eye-care-demo        302
 /industrial-demo  https://sixharmony.luminasales.io/industrial-services  302

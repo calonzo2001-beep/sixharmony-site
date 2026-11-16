@@ -2,147 +2,602 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<script>document.documentElement.className="js"</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Six Harmony | AI Answering for Eye Care Practices and Industrial Service Companies</title>
-<meta name="description" content="Six Harmony installs AI receptionists, booking, and follow-up systems for Eye Care Practices and Industrial Service Companies in Texas. Call the live demo yourself.">
+<title>Six Harmony | AI Receptionists &amp; CRMs for Eye Care, Industrial &amp; Commercial, and Gyms</title>
+<meta name="description" content="Six Harmony installs AI receptionists and the CRM that runs them — for eye care practices, industrial and commercial service companies, and gyms. Call the live demo yourself.">
 <link rel="canonical" href="https://sixharmony.net/">
-
 <meta property="og:type" content="website">
-<meta property="og:title" content="Six Harmony | AI Answering for Eye Care Practices and Industrial Service Companies">
-<meta property="og:description" content="Six Harmony installs AI receptionists, booking, and follow-up systems for Eye Care Practices and Industrial Service Companies in Texas. Call the live demo yourself.">
+<meta property="og:title" content="Six Harmony | AI Receptionists &amp; CRMs for Eye Care, Industrial &amp; Commercial, and Gyms">
+<meta property="og:description" content="Six Harmony installs two things: an AI receptionist that answers every call, and the CRM it runs on — for eye care practices, industrial and commercial service companies, and gyms.">
 <meta property="og:url" content="https://sixharmony.net/">
 <meta property="og:image" content="https://sixharmony.net/img/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="dark">
 <meta name="darkreader-lock">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#0a0b0d">
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="fonts/Oranienbaum-Regular.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="css/site.css?v=20261101k">
-<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Six Harmony", "url": "https://sixharmony.net", "logo": "https://sixharmony.net/img/logo-navy.svg", "image": "https://sixharmony.net/img/og.png", "email": "cristian@sixharmony.net", "description": "AI answering, booking, and follow-up systems that help Eye Care Practices and Industrial Service Companies capture the revenue they lose to missed calls and missed follow-up.", "address": {"@type": "PostalAddress", "addressLocality": "San Antonio", "addressRegion": "TX", "addressCountry": "US"}, "areaServed": ["San Antonio", "Texas", "United States"], "founder": {"@type": "Person", "name": "Cristian Alonzo", "jobTitle": "Founder", "image": "https://sixharmony.net/img/partners/cristian-alonzo.jpg", "sameAs": ["https://www.linkedin.com/in/cristian-alonzo-24589a21b"]}, "sameAs": ["https://www.linkedin.com/company/six-harmony"]}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does it sound like a robot?", "acceptedAnswer": {"@type": "Answer", "text": "No. You can call the live demo and judge for yourself. The voice is natural, it handles interruptions, and callers can ask things the way they normally would."}}, {"@type": "Question", "name": "What happens when it can't answer something?", "acceptedAnswer": {"@type": "Answer", "text": "It hands off. Clinical questions, pricing it isn't allowed to quote, or anything outside its lane goes to a person on your team with a written summary. It never guesses."}}, {"@type": "Question", "name": "Do I keep my phone number?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Your number stays yours. The system sits behind it, so patients and customers call the same number they always have."}}]}]</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Six Harmony", "url": "https://sixharmony.net", "logo": "https://sixharmony.net/img/logo-navy.svg", "image": "https://sixharmony.net/img/og.png", "email": "cristian@sixharmony.net", "description": "AI answering, booking, and follow-up systems that help eye care practices, industrial and commercial service companies, and gyms capture the revenue they lose to missed calls and missed follow-up.", "address": {"@type": "PostalAddress", "addressLocality": "San Antonio", "addressRegion": "TX", "addressCountry": "US"}, "areaServed": ["San Antonio", "Texas", "United States"], "founder": {"@type": "Person", "name": "Cristian Alonzo", "jobTitle": "Founder", "image": "https://sixharmony.net/img/partners/cristian-alonzo.jpg", "sameAs": ["https://www.linkedin.com/in/cristian-alonzo-24589a21b"]}, "sameAs": ["https://www.linkedin.com/company/six-harmony"]}</script>
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#0a0b0d; --bg2:#0e1013; --panel:#13151a; --line:#23262c; --line2:#2d3139;
+  --fg:#f2f3f5; --mut:#a3a9b1; --dim:#6b7078; --faint:#8a9099;
+  --gold:#C9A227; --gold-soft:#E2C766; --ink:#0a0b0d;
+  --maxw:1180px;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:60}
+::selection{background:rgba(226,199,102,.28);color:#fff}
+img{max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold-soft);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.skip{position:absolute;left:-9999px;top:0}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip:focus{left:12px;top:12px;z-index:99;background:var(--gold);color:var(--ink);padding:9px 14px;border-radius:8px;font-weight:600}
+
+h1,h2{font-weight:600;letter-spacing:-0.03em;line-height:1.08;margin:0;text-wrap:balance}
+h1{font-size:clamp(34px,5.4vw,62px);letter-spacing:-0.035em;line-height:1.04}
+h2{font-size:clamp(26px,3.6vw,42px)}
+h3{font-size:17px;font-weight:600;letter-spacing:-0.01em;margin:0 0 8px}
+.dim{color:#7c828b}
+.lede{color:var(--mut);font-size:clamp(16px,1.6vw,19px);max-width:620px;margin:18px auto 0;text-wrap:pretty}
+.eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-soft);font-weight:600;margin:0 0 16px;line-height:1.55}
+.fine{color:var(--faint);font-size:13px;text-align:center;margin:22px 0 0}
+
+/* header */
+.site-head{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(10,11,13,.55);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);border-bottom:1px solid transparent;transition:background .3s,border-color .3s}
+.site-head.scrolled{background:rgba(10,11,13,.86);border-bottom-color:rgba(255,255,255,.07)}
+.site-head .wrap{display:flex;align-items:center;gap:14px;height:64px}
+.brand{display:block;margin-right:auto}
+.brand img{display:block;height:34px;width:auto}
+.menu-btn{display:none;appearance:none;background:none;border:1px solid var(--line2);font-size:14px;min-height:44px;padding:0 14px;border-radius:8px;cursor:pointer}
+.nav{display:flex;align-items:center;gap:28px;font-size:14px;color:var(--mut);margin-right:10px}
+.nav a{transition:color .2s;padding:10px 0}
+.nav a:hover{color:var(--fg)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;white-space:nowrap;font-weight:600;font-size:15px;border-radius:10px;min-height:46px;padding:0 22px;cursor:pointer;border:1px solid transparent;transition:transform .3s var(--ease),background .2s,border-color .2s,box-shadow .3s var(--ease)}
+.btn svg{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none;transition:transform .3s var(--ease)}
+.btn:hover svg{transform:translate(2px,-2px)}
+.btn .down{transform:rotate(135deg)}
+.btn:hover .down{transform:rotate(135deg) translate(2px,-2px)}
+.btn-white{background:var(--fg);color:var(--ink)}
+.btn-white:hover{transform:translateY(-1px);box-shadow:0 10px 30px -10px rgba(242,243,245,.35)}
+.btn-ghost{border-color:rgba(255,255,255,.16);color:var(--fg);background:rgba(10,11,13,.45)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.34)}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-gold:hover{background:var(--gold-soft)}
+.head-cta{min-height:44px;padding:0 16px;font-size:13.5px}
+.cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.cta-note{color:var(--mut);font-size:14px;margin:16px 0 0}
+
+/* hero with the zen garden */
+/* the hero slides under the clear header so the garden runs to the top edge */
+.hero{position:relative;overflow:hidden;text-align:center;margin-top:-65px;padding:149px 0 0}
+.hero .sky{position:absolute;inset:0;z-index:0;background:
+  radial-gradient(46% 40% at 50% 30%, rgba(10,11,13,.80), rgba(10,11,13,0) 100%),
+  linear-gradient(180deg, rgba(10,11,13,.55) 0%, rgba(10,11,13,0) 26%, rgba(10,11,13,0) 62%, var(--bg) 92%),
+  url('img/zen-garden.svg') center top/max(1600px,100%) auto no-repeat,
+  #0c0e12}
+.hero .wrap{position:relative;z-index:1}
+.hero .lede{color:#c4c8ce}
+.hero h1 .dim{color:#9aa0a8}
+.hero .cta-note{color:#c4c8ce}
+.hero-in>*{animation:rise .9s var(--ease) both}
+.hero-in>*:nth-child(2){animation-delay:.06s}
+.hero-in>*:nth-child(3){animation-delay:.12s}
+.hero-in>*:nth-child(4){animation-delay:.18s}
+.hero-in>*:nth-child(5){animation-delay:.22s}
+.hero-in>*:nth-child(6){animation-delay:.3s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* business picker */
+.demo{margin:56px auto 0;max-width:1060px}
+.pick{display:flex;flex-direction:column;align-items:center;gap:14px}
+.pick-label{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#d9dce1;font-weight:600;margin:0}
+.seg{position:relative;display:inline-flex;padding:4px;border-radius:999px;background:rgba(14,16,19,.82);border:1px solid rgba(255,255,255,.10);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.seg .thumb{position:absolute;left:0;top:0;border-radius:999px;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(226,199,102,.55);transition:transform .42s var(--ease),width .42s var(--ease);pointer-events:none}
+.seg button{position:relative;appearance:none;background:none;border:0;border-radius:999px;min-height:44px;padding:0 20px;font-size:15px;font-weight:500;color:var(--mut);cursor:pointer;white-space:nowrap;transition:color .2s}
+.seg button:hover{color:var(--fg)}
+.seg button[aria-pressed="true"]{color:var(--fg)}
+.seg.quiet{background:none;border-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;margin-bottom:26px}
+.seg.quiet button{font-size:13.5px;padding:0 14px;min-height:40px}
+
+/* the video */
+.frame{position:relative;margin-top:22px;border:1px solid rgba(255,255,255,.10);border-radius:16px;overflow:hidden;background:#0d0e11;
+  box-shadow:0 0 0 1px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.06), 0 40px 120px -20px rgba(0,0,0,.8)}
+.stage{position:relative;aspect-ratio:16/9;background:#0b0c0f;overflow:hidden}
+.stage video{display:block;width:100%;height:100%;object-fit:contain;background:#0b0c0f;transition:opacity .28s ease}
+.stage.swap video{opacity:0}
+.sound{position:absolute;right:14px;top:14px;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border-radius:999px;cursor:pointer;
+  background:rgba(10,11,13,.72);border:1px solid rgba(255,255,255,.16);color:var(--fg);font-size:13px;font-weight:600;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:border-color .2s,opacity .3s}
+.sound:hover{border-color:rgba(226,199,102,.6)}
+.sound svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.talkpanel{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:24px;
+  background:radial-gradient(60% 70% at 50% 40%, rgba(226,199,102,.10), transparent 70%), #0d0e11}
+.talkpanel b{font-size:clamp(20px,3vw,30px);font-weight:600;letter-spacing:-0.02em}
+.talkpanel span{color:var(--mut);max-width:46ch;font-size:15px}
+.under{display:flex;justify-content:center;margin:22px 0 0;min-height:46px;align-items:center}
+.under span{color:var(--mut);font-size:14px}
+.demo .fine{margin-top:14px}
+
+/* sections */
+section.sec{padding-block:clamp(72px,9vw,124px)}
+section.sec.ruled{border-top:1px solid rgba(255,255,255,.05)}
+section.sec.tight{padding-block:56px 8px}
+.sec-head{max-width:760px;margin:0 auto 56px;text-align:center}
+.sec-head.mark::before{content:"";display:block;width:28px;height:1px;background:rgba(226,199,102,.55);margin:0 auto 26px}
+
+/* names in type */
+.net-note{color:var(--mut);font-size:14px;text-align:center;margin:0}
+.names{list-style:none;margin:22px auto 0;padding:0;display:grid;grid-template-columns:repeat(4,auto);justify-content:center;gap:14px 56px}
+.names li{font-size:18px;font-weight:500;letter-spacing:-0.01em;color:#8e949d;text-align:center}
+.names.small{display:flex;flex-wrap:wrap;gap:10px 30px;max-width:760px}
+.names.small li{font-size:14.5px;color:var(--faint)}
+
+/* what it handles: ruled grid, like raked lines */
+.swapper{transition:opacity .22s ease,transform .32s var(--ease)}
+.swapping .swapper{opacity:0;transform:translateY(6px)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0 40px}
+.card{border-top:1px solid var(--line);padding:26px 0 34px}
+.card p{color:var(--mut);font-size:14.5px;margin:0;max-width:38ch}
+
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:34px 32px;counter-reset:st}
+.step{position:relative;border-top:1px solid var(--line2);padding:22px 0 0;counter-increment:st}
+.step::after{content:"";position:absolute;top:-4px;left:0;width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.step::before{content:"0" counter(st);display:block;font-size:13px;letter-spacing:.14em;color:var(--gold-soft);font-weight:500;font-variant-numeric:tabular-nums;margin-bottom:12px}
+.step p{color:var(--mut);font-size:14.5px;margin:0;max-width:34ch}
+
+/* the letter */
+.letter{max-width:680px;margin:0 auto}
+.letter h2{margin-bottom:26px}
+.letter p{color:var(--mut);font-size:17px;line-height:1.75;margin:0 0 18px;text-wrap:pretty}
+.letter p b{color:var(--fg);font-weight:600}
+.letter .eyebrow{color:var(--gold-soft);font-size:12px;line-height:1.55;margin:0 0 16px}
+.letter .sig{color:var(--fg);font-weight:500;font-size:15px;margin-top:28px}
+.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:28px;margin-top:44px}
+.principles div{border-top:1px solid rgba(226,199,102,.45);padding-top:16px}
+.principles b{display:block;font-size:14px;margin-bottom:6px;font-weight:600}
+.principles span{color:var(--mut);font-size:13.5px;line-height:1.55;display:block}
+
+.people{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.person{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:30px 26px;text-align:center;transition:border-color .3s,transform .4s var(--ease)}
+.person:hover{border-color:var(--line2);transform:translateY(-2px)}
+.person img{width:96px;height:96px;border-radius:50%;object-fit:cover;margin-bottom:16px;box-shadow:0 0 0 1px rgba(255,255,255,.10)}
+.person h3{margin:0;font-size:17px;letter-spacing:-0.01em;font-weight:600}
+.person span{display:block;color:var(--mut);font-size:13.5px;margin:6px 0 12px}
+.person a{display:inline-block;color:var(--gold-soft);font-size:13.5px;font-weight:600;padding:12px 14px;margin-bottom:-10px;transition:color .2s}
+.person a:hover{color:var(--gold)}
+
+.faq{max-width:760px;margin:0 auto}
+.faq details{border-top:1px solid var(--line)}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;padding:21px 40px 21px 0;font-weight:600;font-size:16.5px;position:relative;transition:color .2s}
+.faq summary:hover{color:#fff}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:6px;top:50%;width:11px;height:11px;margin-top:-6px;
+  background:linear-gradient(var(--mut),var(--mut)) center/100% 1px no-repeat, linear-gradient(var(--mut),var(--mut)) center/1px 100% no-repeat;transition:transform .3s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .a{color:var(--mut);padding:0 0 24px;font-size:15px;max-width:640px;margin:0}
+.faq .a a{color:var(--gold-soft);font-weight:600}
+
+/* closing band: raked rings */
+.cta-band{position:relative;overflow:hidden;text-align:center;padding-block:clamp(96px,11vw,150px);border-top:1px solid rgba(255,255,255,.05);
+  background:radial-gradient(50% 55% at 50% 100%, rgba(201,162,39,.07), transparent 70%)}
+.cta-band::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-radial-gradient(circle at 50% 125%, transparent 0 25px, rgba(255,255,255,.04) 25px 26px);
+  -webkit-mask-image:radial-gradient(60% 80% at 50% 100%,#000,transparent 75%);mask-image:radial-gradient(60% 80% at 50% 100%,#000,transparent 75%)}
+.cta-band .wrap{position:relative}
+
+footer.site-foot{border-top:1px solid rgba(255,255,255,.06);padding-block:44px;color:var(--faint);font-size:13.5px}
+footer.site-foot .wrap{display:flex;flex-wrap:wrap;gap:14px 40px;align-items:center}
+footer.site-foot img{height:26px;width:auto;opacity:.85}
+footer.site-foot nav{display:flex;flex-wrap:wrap;gap:4px 22px;margin-left:auto}
+footer.site-foot nav a{padding:12px 0;transition:color .2s}
+footer.site-foot a:hover{color:var(--fg)}
+.foot-line{width:100%;margin:0;user-select:text}
+
+/* scroll reveal: the class is added by script, so content shows if script fails */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:860px){
+  .menu-btn{display:block}
+  .nav{display:none;position:absolute;top:64px;left:0;right:0;margin:0;background:#0e1013;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:8px max(20px,env(safe-area-inset-right,0px)) 14px max(20px,env(safe-area-inset-left,0px));gap:0}
+  .nav a{padding:14px 0;font-size:16px;color:var(--fg);border-top:1px solid var(--line)}
+  .nav a:first-child{border-top:0}
+  .nav.open{display:flex}
+  .hero{padding-top:124px}
+  .hero .sky{background:
+    radial-gradient(90% 30% at 50% 22%, rgba(10,11,13,.78), rgba(10,11,13,0) 100%),
+    linear-gradient(180deg, rgba(10,11,13,.6) 0%, rgba(10,11,13,.15) 30%, rgba(10,11,13,.15) 62%, var(--bg) 92%),
+    url('img/zen-garden.svg') 14% top/1500px auto no-repeat,
+    #0c0e12}
+  .hero .eyebrow{font-size:11px;letter-spacing:.13em}
+  .cta-row .btn{flex:1 1 100%}
+  .demo{margin-top:44px}
+  .seg{display:flex;width:100%}
+  .seg button{flex:1 1 auto;padding:0 8px;font-size:13.5px}
+  .seg.quiet button{font-size:13px;padding:0 8px}
+  .names{grid-template-columns:repeat(2,auto);gap:12px 34px}
+  .names li{font-size:16px}
+  .sec-head{margin-bottom:40px}
+  .letter p{font-size:16px}
+  .sound{right:8px;top:8px;min-height:34px;padding:0 11px;font-size:12px;gap:6px}
+}
+@media (max-width:520px){
+  .seg{display:grid;grid-template-columns:1fr 1.6fr 1fr}
+  .seg button{white-space:normal;min-height:48px;padding:6px;font-size:14px;line-height:1.2}
+  .seg.quiet button{min-height:44px;font-size:13px}
+}
+@media (max-width:350px){h1{font-size:27px}}
+@media (max-width:380px){
+  .head-cta{padding:0 12px;font-size:13px}
+  .brand img{height:28px}
+  .site-head .wrap{gap:10px}
+  .menu-btn{padding:0 11px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero-in>*{animation:none}
+  .reveal{opacity:1;transform:none;transition:none}
+  .btn,.btn svg,.seg .thumb,.swapper,.stage video,.person{transition:none}
+}
+</style>
 </head>
+
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site-head">
+<header class="site-head" id="head">
   <div class="wrap">
-    <a class="brand" href="index.html" aria-label="Six Harmony home"><img src="img/logo-navy.svg" alt="Six Harmony" width="160" height="46"></a>
-    <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <a class="brand" href="#top" aria-label="Six Harmony, back to top"><img src="img/logo-ivory.svg" alt="Six Harmony" width="160" height="46"></a>
     <nav class="nav" id="nav" aria-label="Main">
-      <a href="ai-receptionist-eye-care.html">Eye Care</a>
-      <a href="ai-back-office-industrial-services.html">Industrial Services</a>
-      <a href="demos.html">Live Demos</a>
-      <a href="about.html">About Us</a>
-      <a class="btn btn-gold" href="audit.html">Free Audit</a>
+      <a href="#demo">Demo</a>
+      <a href="#handles">What it handles</a>
+      <a href="#how">How it works</a>
+      <a href="#about">About</a>
+      <a href="#faq">Questions</a>
+      <a href="audit.html">Free audit</a>
     </nav>
+    <a class="btn btn-gold head-cta" href="/book">Book a call</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
   </div>
 </header>
+
 <main id="main">
 
-<section class="hero-garden" id="top">
-  <div class="bg" aria-hidden="true"></div>
-  <img class="hero-wm" src="img/mark-navy.svg" alt="" width="380" height="364">
-  <div class="wrap">
-    <p class="eyebrow">Every call answered. Every inquiry followed up.</p>
-    <h1>Where people, processes, and technology work in <em>harmony.</em></h1>
-    <p class="lede">AI answering, booking, and follow-up, built for two industries:</p>
-    <div class="niche-links">
-      <a href="ai-receptionist-eye-care.html"><span>Eye Care Practices</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5L12 8l-3.5 3.5"/></svg></a>
-      <a href="ai-back-office-industrial-services.html"><span>Industrial Service Companies</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5L12 8l-3.5 3.5"/></svg></a>
+<section class="hero" id="top">
+  <div class="sky" aria-hidden="true"></div>
+  <div class="wrap hero-in">
+    <p class="eyebrow">AI receptionists &amp; CRMs · San Antonio</p>
+    <h1>Every call answered.<br><span class="dim">Every follow-up done.</span></h1>
+    <p class="lede">Six Harmony installs two things: an AI receptionist that answers every call, and the CRM it runs on — for eye care practices, industrial and commercial service companies, and gyms.</p>
+    <div class="cta-row">
+      <a class="btn btn-white" href="/book">Book a strategy call <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13L13 3M6 3h7v7"/></svg></a>
+      <a class="btn btn-ghost" href="#demo">See it work <svg class="down" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13L13 3M6 3h7v7"/></svg></a>
     </div>
-    <div class="cta-actions">
-      <a class="btn btn-gold" href="audit.html">Take the free 3-minute audit</a>
-      <a class="btn btn-line" href="demos.html">Call the live demo</a>
-    </div>
-  </div>
-</section>
+    <p class="cta-note">Free, 15 minutes. We map where calls and follow-ups are leaking — using your numbers.</p>
 
-<section class="band">
-  <div class="wrap">
-    <div class="section-head" data-reveal>
-      <h2>Two kinds of teams, one problem</h2>
-      <p>Calls and requests arrive faster than people can handle them. The ones that slip through cost the most, because someone already wanted to do business with you.</p>
-    </div>
-    <div class="industries" data-reveal data-stagger>
-      <article class="industry">
-        <div class="num">01</div>
-        <h3>Eye Care Practices</h3>
-        <p>An AI front desk that answers every patient call, books exams, follows up on LASIK inquiries, and brings back patients overdue for an exam.</p>
-        <div class="links"><a class="btn btn-gold" href="ai-receptionist-eye-care.html">See how it works</a></div>
-      </article>
-      <article class="industry">
-        <div class="num">02</div>
-        <h3>Industrial Service Companies</h3>
-        <p>An AI back office that triages emergency calls, turns inspection findings into same-day quotes, and follows up on every open quote.</p>
-        <div class="links"><a class="btn btn-gold" href="ai-back-office-industrial-services.html">See how it works</a></div>
-      </article>
+    <div class="demo" id="demo">
+      <div class="pick">
+        <p class="pick-label" id="pickLabel">Show me my business</p>
+        <div class="seg" role="group" aria-labelledby="pickLabel" data-seg></div>
+      </div>
+      <div class="frame">
+        <div class="stage" id="stage">
+          <video id="vid" controls playsinline muted loop preload="none" poster="media/mechanical-poster.jpg" width="1600" height="900"></video>
+          <div class="talkpanel" id="talkpanel" hidden>
+            <b>Hear it answer a call.</b>
+            <span>Talk to Elise, the sample receptionist for an eye care practice. Book an exam, ask about vision plans, or ask about LASIK.</span>
+            <a class="btn btn-white" href="https://sixharmony.luminasales.io/eye-care-demo" target="_blank" rel="noopener">Talk to Elise <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13L13 3M6 3h7v7"/></svg></a>
+          </div>
+          <button class="sound" id="sound" type="button"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 6v4h2.5l3.5 3V3L5 6z"/><path d="M11 5.5a3.5 3.5 0 010 5M12.8 3.6a6 6 0 010 8.8"/></svg>Sound on</button>
+        </div>
+      </div>
+      <div class="under" id="under"></div>
+      <p class="fine">Every demo uses a fictional business and sample data. Yours is built custom for your practice or business.</p>
     </div>
   </div>
 </section>
 
-<section class="band band-navy">
+<section class="sec tight">
   <div class="wrap">
-    <div class="section-head" data-reveal>
-      <h2>How working with us goes</h2>
-      <p>No long contracts before we understand your operation. Each step stands on its own.</p>
+    <h2 class="sr-only">Partner network projects</h2>
+    <p class="net-note">Projects delivered by members of the Six Harmony partner network</p>
+    <ul class="names">
+      <li>Memorial Hermann</li><li>ExxonMobil</li><li>Chevron</li><li>Shell</li><li>Kinder Morgan</li><li>Devon Energy</li><li>ConocoPhillips</li><li>EOG Resources</li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="handles">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="seg quiet" role="group" aria-label="Show me my business" data-seg></div>
+      <div class="swapper" aria-live="polite">
+        <p class="eyebrow" id="nEyebrow"></p>
+        <h2 id="nHead"></h2>
+        <p class="lede" id="nLede"></p>
+      </div>
     </div>
-    <ol class="steps" data-reveal data-stagger>
-      <li><h3>Free Revenue Audit</h3><p>Three minutes, online. Answer 12 quick questions and get your Revenue Score, your #1 gap, what it may be costing you, and a 30-day plan.</p></li>
-      <li><h3>Free strategy call</h3><p>Twenty minutes. We walk through your assessment, check the numbers with you, and build a working demo around your own workflow so you can hear it before deciding.</p></li>
-      <li><h3>Install, test, report</h3><p>We set it up with your tools, test it with your team, and send a monthly report on calls answered and follow-ups done.</p></li>
-    </ol>
+    <div class="cards swapper" id="jobs"></div>
   </div>
 </section>
 
-<section class="band">
+<section class="sec ruled" id="how">
   <div class="wrap">
-    <div class="section-head" data-reveal><h2>Questions owners ask first</h2></div>
-    <div class="faq"><details><summary>Does it sound like a robot?</summary><p>No. You can call the live demo and judge for yourself. The voice is natural, it handles interruptions, and callers can ask things the way they normally would.</p></details><details><summary>What happens when it can't answer something?</summary><p>It hands off. Clinical questions, pricing it isn't allowed to quote, or anything outside its lane goes to a person on your team with a written summary. It never guesses.</p></details><details><summary>Do I keep my phone number?</summary><p>Yes. Your number stays yours. The system sits behind it, so patients and customers call the same number they always have.</p></details></div>
+    <div class="sec-head mark">
+      <h2>How an install works</h2>
+      <p class="lede">We find the leak first. If the numbers don't justify an install, we'll tell you.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Strategy call</h3><p>Fifteen minutes. We work out what missed calls and quiet follow-up cost you per month — your numbers, not ours.</p></div>
+      <div class="step"><h3>Scope</h3><p>A written plan of exactly what gets installed, what it handles, and what it hands to a person.</p></div>
+      <div class="step"><h3>Install</h3><p>Your number stays yours. The system goes in behind it — typically live in about a week.</p></div>
+      <div class="step"><h3>Train &amp; optimize</h3><p>We train your team on the console, then review the call log with you and tighten what the AI says.</p></div>
+    </div>
   </div>
 </section>
 
-
-<section class="band nc" aria-labelledby="nc-h">
+<section class="sec ruled" id="about">
   <div class="wrap">
-    <p class="kicker">Our network</p>
-    <h2 id="nc-h">Real people behind every install.</h2>
-    <p class="nc-sub">Family-run in San Antonio, built with our strategic partners and a bench of 25 vetted developers.</p>
-    <div class="nc-row"><a class="nc-p" href="https://www.linkedin.com/in/cristian-alonzo-24589a21b" target="_blank" rel="noopener"><img src="img/partners/cristian-alonzo.jpg" alt="" width="96" height="96" loading="lazy"><b>Cristian Alonzo</b><span>Founder, Six Harmony</span></a><a class="nc-p" href="https://www.linkedin.com/in/tim-chao" target="_blank" rel="noopener"><img src="img/partners/tim-chao.jpg" alt="" width="96" height="96" loading="lazy"><b>Tim Chao</b><span>Strategic Partner</span></a><a class="nc-p" href="https://www.linkedin.com/in/joebren" target="_blank" rel="noopener"><img src="img/partners/joe-brennan.jpg" alt="" width="96" height="96" loading="lazy"><b>Joe Brennan</b><span>Lead Developer</span></a></div>
-    <a class="nc-more" href="about.html#network">See our full network &rarr;</a>
+    <div class="letter">
+      <p class="eyebrow">Why Six Harmony</p>
+      <h2>Deadlines don't slip all at once.<br><span class="dim">They slip a little at a time.</span></h2>
+      <p>I've worked industrial jobs — furnace work, plumbing before that. I never once watched a deadline die from one big disaster. It was always an accumulation: <b>the part nobody reordered. The tweak a customer called in that never made it to paper. The emergency that pulled two people off a job mid-task.</b></p>
+      <p>Every one of those enters the business the same way — a phone call, a note, a follow-up someone meant to get to. Office work nobody has hands for when everyone's covering the floor. It doesn't look like a crisis on any single day. It just quietly becomes a missed deadline, a mad scramble, a customer who doesn't call back.</p>
+      <p>That's what we install against. The receptionist catches what comes in. The CRM writes it down where it can't be lost. The agent chases what would otherwise be forgotten. <b>Nothing heroic — just nothing dropped.</b></p>
+      <p class="sig">— Cristian Alonzo, Founder</p>
+      <div class="principles">
+        <div><b>Your judgment stays in charge</b><span>Nothing moves money or commits a crew without a person approving it.</span></div>
+        <div><b>Your tools stay</b><span>We work alongside what you already run and confirm every integration during scope.</span></div>
+        <div><b>Three industries, on purpose</b><span>Eye care, industrial &amp; commercial, gyms. We build for the work we understand.</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="band band-navy cta-band"><div class="wrap" data-reveal><div><h2>Find out where your revenue slips through.</h2><p class="lede" style="margin:14px 0 0;color:var(--on-navy)">Take the free 3-minute audit. Your Revenue Assessment shows up on screen as soon as you finish.</p></div><div class="cta-actions"><a class="btn btn-gold" href="audit.html">Take the free audit</a><a class="btn btn-line" data-book href="https://cal.com/sixharmony/leak-map-call">Book a strategy call</a></div></div></section>
+<section class="sec" id="people">
+  <div class="wrap">
+    <div class="sec-head mark">
+      <h2>Backed by people<br><span class="dim">who've built it before.</span></h2>
+    </div>
+    <div class="people">
+      <div class="person"><img src="img/partners/cristian-alonzo.jpg" alt="" width="96" height="96" loading="lazy"><h3>Cristian Alonzo</h3><span>Founder · Six Harmony</span><a href="https://www.linkedin.com/in/cristian-alonzo-24589a21b" target="_blank" rel="noopener" aria-label="Cristian Alonzo on LinkedIn (opens in a new tab)">LinkedIn</a></div>
+      <div class="person"><img src="img/partners/tim-chao.jpg" alt="" width="96" height="96" loading="lazy"><h3>Tim Chao</h3><span>Strategic Partner · Founder, Regenix.io and TryGTM</span><a href="https://www.linkedin.com/in/tim-chao" target="_blank" rel="noopener" aria-label="Tim Chao on LinkedIn (opens in a new tab)">LinkedIn</a></div>
+      <div class="person"><img src="img/partners/joe-brennan.jpg" alt="" width="96" height="96" loading="lazy"><h3>Joe Brennan</h3><span>Lead Developer · Co-founder, TryGTM</span><a href="https://www.linkedin.com/in/joebren" target="_blank" rel="noopener" aria-label="Joe Brennan on LinkedIn (opens in a new tab)">LinkedIn</a></div>
+    </div>
+    <p class="fine" style="margin-top:52px">Runs on</p>
+    <ul class="names small" style="margin-top:14px">
+      <li>Retell AI</li><li>Twilio</li><li>OpenAI</li><li>Deepgram</li><li>Stripe</li><li>AWS</li><li>Vercel</li><li>Supabase</li><li>n8n</li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec ruled" id="faq">
+  <div class="wrap">
+    <div class="sec-head mark"><h2>Fair questions</h2></div>
+    <div class="faq">
+      <details open><summary>Does it sound like a robot?</summary><p class="a">Judge for yourself: talk to the sample receptionist for <a href="https://sixharmony.luminasales.io/eye-care-demo" target="_blank" rel="noopener">eye care</a> or <a href="https://sixharmony.luminasales.io/industrial-services" target="_blank" rel="noopener">industrial</a>. It handles interruptions, and callers can ask things the way they normally would.</p></details>
+      <details><summary>What happens when it can't answer something?</summary><p class="a">It hands off. Clinical questions, pricing it isn't allowed to quote, or anything outside its lane goes to a person on your team with a written summary. It's set up to hand off rather than guess.</p></details>
+      <details><summary>We already have a practice system or CRM. Do we have to switch?</summary><p class="a">Not necessarily. We work alongside what you already run, and every integration is confirmed during scope — before anything is built.</p></details>
+      <details><summary>Do I keep my phone number?</summary><p class="a">Yes. Your number stays yours. The system sits behind it, so patients and customers call the same number they always have.</p></details>
+      <details><summary>Is the demo a real business?</summary><p class="a">No. Every demo runs on a fictional business with sample data. Yours is branded and configured to how your team already works.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Find out what the phone<br><span class="dim">is costing you.</span></h2>
+    <p class="lede">Fifteen minutes. Your numbers. If the leak isn't worth fixing, we'll say so.</p>
+    <div class="cta-row">
+      <a class="btn btn-white" href="/book">Book a strategy call <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13L13 3M6 3h7v7"/></svg></a>
+      <a class="btn btn-ghost" href="audit.html">Or take the free audit</a>
+    </div>
+  </div>
+</section>
 
 </main>
 <footer class="site-foot">
   <div class="wrap">
-    <div>
-      <img src="img/logo-navy.svg" alt="Six Harmony" width="140" height="40">
-      <p>Where people, processes, and technology work in harmony.</p>
-      <p>Helping businesses keep more of the revenue they earn.<br>A family business in San Antonio, Texas.</p>
-    </div>
-    <div>
-      <ul>
-        <li><a href="ai-receptionist-eye-care.html">Eye Care</a></li>
-        <li><a href="ai-back-office-industrial-services.html">Industrial Services</a></li>
-        <li><a href="demos.html">Live Demos</a></li>
-        <li><a href="blog/index.html">Blog</a></li>
-      </ul>
-    </div>
-    <div>
-      <ul>
-        <li><a href="audit.html">Free Revenue Audit</a></li>
-        <li><a data-book href="https://cal.com/sixharmony/leak-map-call">Book a strategy call</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="https://www.linkedin.com/company/six-harmony" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></li>
-      </ul>
-    </div>
-    <p class="legal">&copy; <span data-year>2026</span> Six Harmony. Demos on this site use fictional businesses and fictional callers. Please don't send patient or customer information through this site.</p>
+    <img src="img/logo-ivory.svg" alt="Six Harmony" width="160" height="46" loading="lazy">
+    <nav aria-label="Footer">
+      <a href="#demo">Demo</a>
+      <a href="#how">How it works</a>
+      <a href="#about">About</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+    <p class="foot-line">Where people, processes, and technology work in harmony. · San Antonio, TX · <a href="mailto:cristian@sixharmony.net">cristian@sixharmony.net</a></p>
   </div>
 </footer>
-<script src="js/site.js?v=20261101k" defer></script>
-<script src="js/marquee.js?v=20261101k" defer></script>
+
+<script>
+(function () {
+  var ARROW = ' <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13L13 3M6 3h7v7"/></svg>';
+  var NICHES = {
+    'eye-care': {
+      label: 'Eye care', video: null, poster: null,
+      talk: ['Talk to Elise, our sample receptionist', 'https://sixharmony.luminasales.io/eye-care-demo'],
+      eyebrow: 'For eye care practices',
+      head: 'The front desk that never<br><span class="dim">puts a patient on hold.</span>',
+      lede: 'Your desk is checking patients in, verifying insurance, and handing off frames — while the phone rings to voicemail. Every missed ring is an exam booked somewhere else.',
+      jobs: [
+        ['After-hours & lunch answering', 'Books exams into real open slots at midnight or over lunch. Urgent symptoms — flashes, floaters, sudden vision change — go straight to your on-call line. It does not triage or give clinical advice.'],
+        ['Spanish, mid-call', 'Switches languages the moment the caller does. No transfer, no call-back, no lost patient.'],
+        ['Cancel-saves', 'When someone calls to cancel, it offers the next opening before releasing the slot — a rebooked exam instead of an empty chair.'],
+        ['Recall outreach', 'Works your overdue-exam list by text and call on a cadence you approve, and stops the moment a patient opts out — instead of a printed report nobody has time for.'],
+        ['Insurance basics', 'Answers the “do you take VSP?” calls and captures the details your desk needs before the patient arrives.'],
+        ['Reorder reminders', 'Texts contact-lens wearers a reorder link when their supply window lapses — revenue that otherwise walks to 1-800 Contacts.']
+      ]
+    },
+    'industrial': {
+      label: 'Industrial & commercial', video: 'media/mechanical-os-demo.mp4', poster: 'media/mechanical-poster.jpg',
+      talk: ['Talk to Ava, our sample receptionist', 'https://sixharmony.luminasales.io/industrial-services'],
+      eyebrow: 'For industrial & commercial services',
+      head: 'Every job call answered.<br><span class="dim">Every quote chased.</span>',
+      lede: 'Your customers call when equipment is down — nights, weekends, mid-job. If it rings out, the work order goes to whoever picked up. We make sure that\'s you.',
+      jobs: [
+        ['24/7 answering & job intake', 'Every call picked up. Site, contact, scope, and urgency captured in writing — not scribbled on a voicemail.'],
+        ['Emergency dispatch routing', 'Down-equipment calls go straight to your on-call tech with the details already taken. Routine requests wait for morning.'],
+        ['Quote follow-up', 'Every open quote gets a follow-up on a schedule you set, until it\'s answered or closed. The jobs you already priced stop going quiet.'],
+        ['Missed-call text-back', 'If a caller hangs up before the pickup, they get a text in seconds — before they dial your competitor.'],
+        ['Scheduling', 'Books walkthroughs, service windows, and maintenance visits into your real calendar.'],
+        ['A written record of everything', 'Every call recorded, transcribed, and logged. When there\'s a dispute about what was said, you have it.']
+      ]
+    },
+    'gyms': {
+      label: 'Gyms', video: 'media/gym-os-demo.mp4', poster: 'media/gym-poster.jpg',
+      talk: null,
+      eyebrow: 'For gyms & fitness studios',
+      head: 'The front desk that sells<br><span class="dim">while your staff coaches.</span>',
+      lede: 'Trials, cancellations, billing questions, “what time is the 6 AM class” — all pouring into a front desk that\'s mid-session. Every unanswered ring is a membership that joins somewhere else.',
+      jobs: [
+        ['Tour & trial booking', 'Most people research gyms at night. Yours is the one that answers at 9 PM and books the tour on the spot.'],
+        ['Cancel-saves', 'When a member calls to cancel, it makes one honest offer — a pause, a different plan — before processing. Members who want to leave are cancelled without a runaround.'],
+        ['Win-back outreach', 'Members who stopped scanning in are the ones who cancel next. They get a text before they get to that call.'],
+        ['Billing questions', 'Declined card? It texts a secure update link instead of letting the balance age into a cancellation.'],
+        ['First reply in seconds', 'Web leads get an answer while they\'re still on your site — not tomorrow afternoon.'],
+        ['Schedule & class questions', 'Hours, classes, day passes, guest policy — answered right away, without pulling a coach off the floor.']
+      ]
+    }
+  };
+  var ORDER = ['industrial', 'eye-care', 'gyms'];
+  var niche = 'industrial';
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var $ = function (id) { return document.getElementById(id); };
+  var vid = $('vid'), stage = $('stage'), sound = $('sound'), handles = $('handles');
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+
+  /* the picker is built once; after that only its state and the sliding thumb change */
+  function drawSegs() {
+    document.querySelectorAll('[data-seg]').forEach(function (seg) {
+      if (!seg.querySelector('button')) {
+        seg.innerHTML = '<i class="thumb" aria-hidden="true"></i>' + ORDER.map(function (k) {
+          return '<button type="button" data-niche="' + k + '">' + esc(NICHES[k].label) + '</button>';
+        }).join('');
+      }
+      var on = null;
+      seg.querySelectorAll('button').forEach(function (b) {
+        var s = b.getAttribute('data-niche') === niche;
+        b.setAttribute('aria-pressed', s ? 'true' : 'false');
+        if (s) on = b;
+      });
+      var t = seg.querySelector('.thumb');
+      if (on && t) {
+        t.style.width = on.offsetWidth + 'px'; t.style.height = on.offsetHeight + 'px';
+        t.style.transform = 'translate(' + on.offsetLeft + 'px,' + on.offsetTop + 'px)';
+      }
+    });
+  }
+
+  var inView = !('IntersectionObserver' in window), want = !reduce, byScript = false;
+  function play() { if (inView && want) { var p = vid.play(); if (p && p.catch) p.catch(function () {}); } }
+  vid.addEventListener('play', function () { want = true; });
+  vid.addEventListener('pause', function () { if (byScript) { byScript = false; return; } if (!vid.ended) want = false; });
+  function loadVideo(n) {
+    vid.poster = n.poster; vid.src = n.video; vid.setAttribute('data-n', niche);
+    vid.setAttribute('aria-label', n.label + ' demo walkthrough on sample data');
+    play();
+  }
+  function drawStage(first) {
+    var n = NICHES[niche], tp = $('talkpanel');
+    tp.hidden = !!n.video; vid.hidden = !n.video;
+    if (!n.video) { byScript = true; vid.pause(); vid.setAttribute('data-n', niche); sound.hidden = true; $('under').innerHTML = '<span>A one-minute eye care walkthrough is on the way.</span>'; return; }
+    syncSound();
+    if (vid.getAttribute('data-n') !== niche) {
+      if (first || reduce) { loadVideo(n); }
+      else {
+        stage.classList.add('swap');
+        setTimeout(function () {
+          loadVideo(n);
+          var done = function () { stage.classList.remove('swap'); vid.removeEventListener('loadeddata', done); };
+          vid.addEventListener('loadeddata', done); setTimeout(done, 900);
+        }, 240);
+      }
+    }
+    var u = $('under');
+    u.innerHTML = n.talk
+      ? '<a class="btn btn-ghost" href="' + n.talk[1] + '" target="_blank" rel="noopener">' + esc(n.talk[0]) + ARROW + '</a>'
+      : '<span>Gym receptionist demo on request — ask on the call.</span>';
+  }
+  function drawNiche() {
+    var n = NICHES[niche];
+    $('nEyebrow').textContent = n.eyebrow;
+    $('nHead').innerHTML = n.head;
+    $('nLede').textContent = n.lede;
+    $('jobs').innerHTML = n.jobs.map(function (j) { return '<div class="card"><h3>' + esc(j[0]) + '</h3><p>' + esc(j[1]) + '</p></div>'; }).join('');
+  }
+
+  var swapT;
+  function setNiche(k, quiet) {
+    if (!NICHES[k] || k === niche) return;
+    niche = k; drawSegs(); drawStage(false);
+    clearTimeout(swapT);
+    if (reduce) { drawNiche(); }
+    else { handles.classList.add('swapping'); swapT = setTimeout(function () { drawNiche(); handles.classList.remove('swapping'); }, 220); }
+    if (!quiet) { try { history.replaceState(null, '', '#' + k); } catch (e) {} }
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-niche]');
+    if (b) setNiche(b.getAttribute('data-niche'));
+  });
+  /* a link such as #gyms picks the business but leaves the visitor at the top of the page */
+  function fromHash() {
+    var h = (location.hash || '').slice(1);
+    if (NICHES[h]) { setNiche(h, true); }
+  }
+  window.addEventListener('hashchange', fromHash);
+
+  /* sound: the video starts muted (browsers require it); one tap restarts it with the voiceover */
+  function syncSound() { sound.hidden = !vid.muted || vid.hidden; }
+  sound.addEventListener('click', function () { vid.muted = false; try { vid.currentTime = 0; } catch (e) {} want = true; var p = vid.play(); if (p && p.catch) p.catch(function () {}); syncSound(); });
+  vid.addEventListener('volumechange', syncSound);
+
+  /* header: clear over the photo, solid once the page moves */
+  var head = $('head');
+  function onScroll() { head.classList.toggle('scrolled', window.scrollY > 24); }
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  /* mobile menu */
+  var mb = document.querySelector('.menu-btn'), nav = $('nav');
+  function closeMenu() { nav.classList.remove('open'); mb.setAttribute('aria-expanded', 'false'); }
+  mb.addEventListener('click', function () { var o = nav.classList.toggle('open'); mb.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a')) closeMenu(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && nav.classList.contains('open')) { closeMenu(); mb.focus(); } });
+  document.addEventListener('click', function (e) { if (nav.classList.contains('open') && !e.target.closest('.site-head')) closeMenu(); });
+
+  /* pause the video when it is off screen; reveal sections as they arrive */
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) {
+      inView = es[0].isIntersecting;
+      if (inView) play(); else if (!vid.paused) { byScript = true; vid.pause(); }
+    }, { threshold: 0.25 }).observe(stage);
+    if (!reduce) {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+      document.querySelectorAll('.sec-head, .steps, .letter, .people, .faq, .names, .net-note, .cta-band .wrap').forEach(function (el) { el.classList.add('reveal'); io.observe(el); });
+    }
+  }
+
+  var h0 = (location.hash || '').slice(1);
+  if (NICHES[h0]) niche = h0;
+  drawSegs(); drawStage(true); drawNiche(); syncSound();
+  window.addEventListener('resize', drawSegs);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawSegs);
+})();
+</script>
 </body>
 </html>
